@@ -111,7 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             alignment: Alignment.center,
                             padding: const EdgeInsets.fromLTRB(0, 30, 0, 10),
                             child: Text(
-                              "Welcome to " + route.first,
+                              "Welcome to ",
                               style: TextStyle(fontSize: 18, color: Colors.white),
                             ),
                           ),
@@ -119,7 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             alignment: Alignment.center,
                             padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                             child: const Text(
-                              "coinstart wallet",
+                              "OpenSui",
                               style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.w600),
                             ),
                           ),
@@ -138,7 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             child: Container(
                               decoration: const BoxDecoration(
                                 color: APP_MainPurpleColor,
-                                borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                                borderRadius: BorderRadius.all(Radius.circular(22.0)),
                               ),
                               // padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
                               // margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
@@ -146,7 +146,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               width: 300,
                               alignment: Alignment.center,
                               child: const Text(
-                                'Register Account',
+                                'Create New Wallet',
                                 style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w700),
                               ),
                             ),
@@ -166,7 +166,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 border: Border.all(width: 1, color: APP_MainPurpleColor),
-                                borderRadius: const BorderRadius.all(Radius.circular(7.0)),
+                                borderRadius: const BorderRadius.all(Radius.circular(22)),
                               ),
                               height: 46,
                               width: 300,

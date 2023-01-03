@@ -132,7 +132,7 @@ class _NeedPasswordPageState extends State<NeedPasswordPage> {
                           alignment: Alignment.center,
                           padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                           child: const Text(
-                            "coinstart wallet",
+                            "OpenSui",
                             style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.w600),
                           ),
                         ),
