@@ -36,7 +36,6 @@ class _RegisterPageState extends State<RegisterPage> {
       }
     });
 
-
     neverLocalStorageRead("register_flow2").then((v) {
       if (v != 'null') {
         Navigator.pushNamed(context, "/CreateImportWalletPage", arguments: {
@@ -53,148 +52,128 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      right: true,
-      bottom: false,
-      left: true,
-      top: false,
-      child: Scaffold(
-        body: GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: () {
-            FocusScope.of(context).requestFocus(FocusNode());
-          },
-          child: Container(
-              color: const Color.fromRGBO(1, 6, 9, 1),
-              alignment: Alignment.center,
-              child: Stack(
-                children: [
-                  Container(
-                    alignment: Alignment.topCenter,
-                    color: Colors.black,
-                    child: Image(
-                      image: const AssetImage("assets/images/index_bg_image.png"),
+    return Scaffold(
+      backgroundColor: const Color(0xff19191A),
+      body: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          FocusScope.of(context).requestFocus(FocusNode());
+        },
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Image(
+              image: const AssetImage("assets/images/welcome_line.png"),
+              fit: BoxFit.contain,
+              width: MediaQuery.of(context).size.width,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    const Image(
+                      image: AssetImage("assets/images/welcome_logo.png"),
                       fit: BoxFit.contain,
-                      width: MediaQuery.of(context).size.width,
+                      width: 124,
+                      height: 124,
                     ),
-                  ),
-                  Stack(
-                    alignment: Alignment.bottomCenter,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ClipRect(
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Stack(
-                                children: [
-                                  const Image(
-                                    image: AssetImage("assets/images/index_icon.png"),
-                                    fit: BoxFit.contain,
-                                    width: 124,
-                                    height: 124,
-                                  ),
-                                  BackdropFilter(
-                                    filter: ImageFilter.blur(sigmaX: 0.4, sigmaY: 0.4),
-                                    child: const SizedBox(),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            padding: const EdgeInsets.fromLTRB(0, 30, 0, 10),
-                            child: Text(
-                              "Welcome to " + route.first,
-                              style: TextStyle(fontSize: 18, color: Colors.white),
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-                            child: const Text(
-                              "coinstart wallet",
-                              style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                        ],
+                    const SizedBox(
+                      height: 60,
+                    ),
+                    const Text(
+                      'Welcome to',
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Text(
+                      "OpenSui",
+                      style: TextStyle(
+                        fontSize: 32,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(context, "/RegisterAccountPage");
-                            },
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                color: APP_MainPurpleColor,
-                                borderRadius: BorderRadius.all(Radius.circular(7.0)),
-                              ),
-                              // padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
-                              // margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-                              height: 46,
-                              width: 300,
-                              alignment: Alignment.center,
-                              child: const Text(
-                                'Register Account',
-                                style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w700),
-                              ),
-                            ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, "/RegisterAccountPage");
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 45)
+                            .copyWith(top: 60),
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                          gradient: LinearGradient(colors: [
+                            Color(0xffA376DD),
+                            Color(0xff7C4FC0),
+                          ]),
+                        ),
+                        height: 50,
+                        alignment: Alignment.center,
+                        child: const Text(
+                          'Create New Wallet',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              if (localPwa == 'null') {
-                                Navigator.pushNamed(context, "/RegisterAccountPage");
-                              } else {
-                                Navigator.pushNamed(context, "/EmailLoginPage");
-                              }
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                border: Border.all(width: 1, color: APP_MainPurpleColor),
-                                borderRadius: const BorderRadius.all(Radius.circular(7.0)),
-                              ),
-                              height: 46,
-                              width: 300,
-                              // padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
-                              // margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-                              alignment: Alignment.center,
-                              child: const Text(
-                                'Login with email',
-                                style: TextStyle(fontSize: 14, color: APP_MainPurpleColor, fontWeight: FontWeight.w700),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 27,
-                          ),
-                          // Text(
-                          //   S.current.Forgot_Password,
-                          //   style: const TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w700),
-                          // ),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                        ],
+                        ),
                       ),
-                    ],
-                  ),
-                ],
-              )),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        if (localPwa == 'null') {
+                          Navigator.pushNamed(context, "/RegisterAccountPage");
+                        } else {
+                          Navigator.pushNamed(context, "/EmailLoginPage");
+                        }
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 45)
+                            .copyWith(top: 15),
+                        decoration: const BoxDecoration(
+                          color: Color(0xff3A393F),
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                        ),
+                        height: 50,
+                        alignment: Alignment.center,
+                        child: const Text(
+                          'Login with email',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 15),
+                      child: Text(
+                        'Have recovery phrase?',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xffB798DF),
+                        ),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: Text(
+                        'Forget Password',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xffB798DF),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
