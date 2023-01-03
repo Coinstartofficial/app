@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:neveruseless/neveruseless.dart';
 
 import '../../main.dart';
+import '../widgets/welcome_header.dart';
 
 class RegisterPage extends StatefulWidget {
   final Map? arguments;
@@ -53,7 +54,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff19191A),
+      backgroundColor: const Color(0xff050505),
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () {
@@ -62,40 +63,20 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Image(
-              image: const AssetImage("assets/images/welcome_line.png"),
-              fit: BoxFit.contain,
-              width: MediaQuery.of(context).size.width,
+            Positioned(
+              top: 0,
+              child: Image(
+                image: const AssetImage("assets/images/index_bg_image.png"),
+                fit: BoxFit.contain,
+                width: MediaQuery.of(context).size.width,
+              ),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Column(
                   children: [
-                    const Image(
-                      image: AssetImage("assets/images/welcome_logo.png"),
-                      fit: BoxFit.contain,
-                      width: 124,
-                      height: 124,
-                    ),
-                    const SizedBox(
-                      height: 60,
-                    ),
-                    const Text(
-                      'Welcome to',
-                      style: TextStyle(fontSize: 16, color: Colors.white),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
-                      "OpenSui",
-                      style: TextStyle(
-                        fontSize: 32,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
+                    const WelcomeHeader(),
                     InkWell(
                       onTap: () {
                         Navigator.pushNamed(context, "/RegisterAccountPage");

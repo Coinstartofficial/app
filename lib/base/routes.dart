@@ -44,8 +44,11 @@ import 'package:coinstart_wallet_extension/wallet/page/wallet_page.dart';
 import 'package:coinstart_wallet_extension/wallet/pagekbg/record_detail_page.dart';
 import 'package:flutter/material.dart';
 
+import '../register/page/create_phrase_page.dart';
 import '../register/page/find_password_code_page.dart';
+import '../register/page/set_password_page.dart';
 import '../register/page/show_password_page.dart';
+import '../register/page/verify_code_page.dart';
 import '../wallet/pagekbg/swap_detail_page_kbg.dart';
 
 final routes = {
@@ -53,6 +56,9 @@ final routes = {
 
   "/RegisterPage": (context, {arguments}) => RegisterPage(arguments: arguments),
   "/RegisterAccountPage": (context, {arguments}) => RegisterAccountPage(arguments: arguments),
+  "/VerifyCodePage": (context, {arguments}) => VerifyCodePage(arguments: arguments),
+  "/CreatePhrasePage": (context, {arguments}) => CreatePhrasePage(arguments: arguments),
+  "/SetPasswordPage": (context, {arguments}) => SetPasswordPage(arguments: arguments),
   "/EmailLoginPage": (context, {arguments}) => EmailLoginPage(arguments: arguments),
   "/SelectWalletLoginPage": (context, {arguments}) => SelectWalletLoginPage(arguments: arguments),
   "/LoginWalletPage": (context, {arguments}) => LoginWalletPage(arguments: arguments),
