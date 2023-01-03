@@ -71,7 +71,7 @@ dependencies:
   ones: ^0.3.6
   web_socket_channel: ^2.2.0
   shared_preferences: ^2.0.15
-  webview_flutter: ^0.3.21
+  webview_flutter: ^2.0.13
 
 
 dev_dependencies:
