@@ -101,6 +101,7 @@ class _SetPasswordPageState extends State<SetPasswordPage> {
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(5)),
                       child: TextField(
+                        obscureText: true,
                         controller: _passwordController,
                         cursorColor: const Color(0xFF584ED3),
                         style: const TextStyle(
@@ -140,7 +141,8 @@ class _SetPasswordPageState extends State<SetPasswordPage> {
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(5)),
                       child: TextField(
-                        controller: _passwordController,
+                        obscureText: true,
+                        controller: _passwordConfirmController,
                         cursorColor: const Color(0xFF584ED3),
                         style: const TextStyle(
                           color: Colors.white,

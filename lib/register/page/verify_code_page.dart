@@ -128,11 +128,19 @@ class _VerifyCodePageState extends State<VerifyCodePage> {
                     onTap: () async {
                       try {
                         showMyCustomLoading('Loading...');
-                        // var res =
-                        //     await SuiApi().sendVerifyCode(emailController.text);
-                        // Map<String, dynamic> map = jsonDecode(res.body);
-                        // print(map.toString());
-                        // if (map['msg'] == 'SUCCESS') {}
+                        await neverLocalStorageWrite(
+                            'register_email', _email ?? '');
+                        await neverLocalStorageWrite(
+                            'register_code', _codeController.text);
+
+                        var res =
+                        await SuiApi()
+                            .verifyCode(_email ?? '', _codeController.text);
+                        Map<String, dynamic> map = jsonDecode(res.body);
+                        print(map.toString());
+                        await neverLocalStorageRemove('register_flow');
+                        if (!mounted) return;
+                        Navigator.pushNamed(context, "/CreateImportWalletPage");
                         Navigator.pushNamed(context, "/CreatePhrasePage");
                       } catch (e) {
                         print(e.toString());
