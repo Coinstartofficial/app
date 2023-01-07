@@ -64,6 +64,7 @@ class DAppInterface {
         return mapToPromise(
             this.send({
                 type: 'get-account',
+                window.getWalletAddress()，
             }),
             (response) => response.accounts
         );

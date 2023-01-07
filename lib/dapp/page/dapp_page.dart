@@ -140,7 +140,7 @@ class _DAppPageState extends State<DAppPage> with AutomaticKeepAliveClientMixin 
                     itemBuilder: (context,index){
                       return GestureDetector(
                         onTap: (){
-                          Navigator.pushNamed(context, "/DAppDetailsPage");
+                          Navigator.pushNamed(context, "/DAppWebview");
 
                           return;
 

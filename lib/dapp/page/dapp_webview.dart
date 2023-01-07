@@ -1,12 +1,17 @@
 
+import 'package:coinstart_wallet_extension/controller/sui_wallet_controller.dart';
 import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:neveruseless/neveruseless.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'dart:js' as js;
 
 import '../../generated/l10n.dart';
 import '../../main.dart';
+
+
+
 class DAppWebview extends StatefulWidget {
   final Map? arguments;
   const DAppWebview({Key? key, this.arguments}) : super(key: key);
@@ -20,10 +25,10 @@ class _DAppWebviewState extends State<DAppWebview> with AutomaticKeepAliveClient
   @override
   bool get wantKeepAlive => true;
 
+  // 暂时只考虑这一种情况
+  String url =  "https://coinstart.io/#";
 
-  String url =  "";
-
-  final TextEditingController addressController = TextEditingController();
+  final SuiWalletController suiWalletController = SuiWalletController();
 
   @override
   void initState() {
@@ -38,6 +43,14 @@ class _DAppWebviewState extends State<DAppWebview> with AutomaticKeepAliveClient
 
   @override
   Widget build(BuildContext context) {
+
+    js.context["getWalletAddress"] = () {
+      if (suiWalletController.currentWallet == null){
+        Navigator.pushNamed(context, "/RegisterPage");
+      }
+      return suiWalletController.currentWallet;
+    };
+
     return Container(
       child: WebView(
         initialUrl: url,
@@ -47,19 +60,6 @@ class _DAppWebviewState extends State<DAppWebview> with AutomaticKeepAliveClient
     );
   }
 
-  _jsCallNativeChannel() {
-    return <JavascriptChannel>[
-      _jsCallNativeJavascriptChannel(context),
-    ].toSet();
-  }
-
-  _jsCallNativeJavascriptChannel(BuildContext context) {
-    return JavascriptChannel(
-        name: "postStatus",
-        onMessageReceived: (JavascriptMessage message) {
-          print("Js call native ：${message.message}");
-        });
-  }
 
 }
 
