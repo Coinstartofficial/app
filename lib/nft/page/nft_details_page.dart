@@ -1,4 +1,4 @@
-import 'package:coinstart_wallet_extension/Base/Global.dart';
+import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:coinstart_wallet_extension/api/sui_api.dart';
 import 'package:coinstart_wallet_extension/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +65,8 @@ class _NFTDetailsPageState extends State<NFTDetailsPage> {
                     child: Image(
                       image: NetworkImage(url),
                       fit: BoxFit.contain,
-                      errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                      errorBuilder: (BuildContext context, Object exception,
+                          StackTrace? stackTrace) {
                         return Container(
                           color: Colors.transparent,
                           alignment: Alignment.center,
@@ -86,14 +87,20 @@ class _NFTDetailsPageState extends State<NFTDetailsPage> {
                     children: [
                       Text(
                         nftName!,
-                        style: const TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w700),
+                        style: const TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
                       Text(
                         _nftData!["description"],
-                        style: const TextStyle(fontSize: 11, color: Colors.white, fontWeight: FontWeight.w700),
+                        style: const TextStyle(
+                            fontSize: 11,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700),
                       ),
                     ],
                   ),
@@ -146,7 +153,8 @@ class _NFTDetailsPageState extends State<NFTDetailsPage> {
                           fit: BoxFit.cover,
                           width: 37,
                           height: 37,
-                          errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                          errorBuilder: (BuildContext context, Object exception,
+                              StackTrace? stackTrace) {
                             return Container(
                               width: 37,
                               height: 37,
@@ -171,7 +179,8 @@ class _NFTDetailsPageState extends State<NFTDetailsPage> {
                             alignment: Alignment.centerLeft,
                             child: const Text(
                               "@KK",
-                              style: TextStyle(fontSize: 12, color: Colors.blueAccent),
+                              style: TextStyle(
+                                  fontSize: 12, color: Colors.blueAccent),
                             ),
                           ),
                           Container(
@@ -179,7 +188,8 @@ class _NFTDetailsPageState extends State<NFTDetailsPage> {
                             alignment: Alignment.centerLeft,
                             child: Text(
                               S.current.Creator,
-                              style: const TextStyle(fontSize: 12, color: Colors.white),
+                              style: const TextStyle(
+                                  fontSize: 12, color: Colors.white),
                             ),
                           ),
                         ],

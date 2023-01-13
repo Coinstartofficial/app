@@ -1,4 +1,4 @@
-import 'package:coinstart_wallet_extension/Base/Global.dart';
+import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:coinstart_wallet_extension/base/MyBotTextToast.dart';
 import 'package:coinstart_wallet_extension/controller/sui_wallet_controller.dart';
 import 'package:coinstart_wallet_extension/generated/l10n.dart';
@@ -15,7 +15,6 @@ class EditWalletSettingPage extends StatefulWidget {
 }
 
 class _EditWalletSettingPageState extends State<EditWalletSettingPage> {
-
   SuiWallet? _data;
 
   @override
@@ -29,7 +28,6 @@ class _EditWalletSettingPageState extends State<EditWalletSettingPage> {
   void dispose() {
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -58,13 +56,23 @@ class _EditWalletSettingPageState extends State<EditWalletSettingPage> {
                       padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(99),
-                        child: Image(image: const AssetImage("assets/images/coinstart_logo_white.png"),width: 26,height: 26, fit: BoxFit.contain,
-                          errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                        child: Image(
+                          image: const AssetImage(
+                              "assets/images/coinstart_logo_white.png"),
+                          width: 26,
+                          height: 26,
+                          fit: BoxFit.contain,
+                          errorBuilder: (BuildContext context, Object exception,
+                              StackTrace? stackTrace) {
                             return Container(
-                              width: 26,height: 26,
+                              width: 26,
+                              height: 26,
                               color: Colors.transparent,
                               alignment: Alignment.center,
-                              child: Icon(Icons.sms_failed_rounded,color: Colors.grey.withOpacity(0.2),),
+                              child: Icon(
+                                Icons.sms_failed_rounded,
+                                color: Colors.grey.withOpacity(0.2),
+                              ),
                             );
                           },
                         ),
@@ -74,7 +82,10 @@ class _EditWalletSettingPageState extends State<EditWalletSettingPage> {
                       child: Container(
                         alignment: Alignment.centerLeft,
                         padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        child: Text(_data!.name!,style: TextStyle(fontSize: 14,color: Colors.white),),
+                        child: Text(
+                          _data!.name!,
+                          style: TextStyle(fontSize: 14, color: Colors.white),
+                        ),
                       ),
                     ),
                   ],
@@ -187,16 +198,17 @@ class _EditWalletSettingPageState extends State<EditWalletSettingPage> {
               //     ),
               //   ),
               // ),
-             // const Divider(height: 1,color: Colors.grey,),
+              // const Divider(height: 1,color: Colors.grey,),
               InkWell(
-                onTap: () async{
-                  final TextEditingController pwdController = TextEditingController();
+                onTap: () async {
+                  final TextEditingController pwdController =
+                      TextEditingController();
                   String pwd = await neverLocalStorageRead("LocalPassword");
                   showModalBottomSheet(
                     isScrollControlled: true,
                     backgroundColor: Colors.transparent,
                     context: context,
-                    builder: (context){
+                    builder: (context) {
                       return Container(
                         height: 220,
                         decoration: const BoxDecoration(
@@ -207,36 +219,55 @@ class _EditWalletSettingPageState extends State<EditWalletSettingPage> {
                         child: Column(
                           children: [
                             Container(
-                              padding: const EdgeInsets.fromLTRB(20, 10, 10, 10),
+                              padding:
+                                  const EdgeInsets.fromLTRB(20, 10, 10, 10),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(S.current.Please_input_password, style: const TextStyle(color: Colors.white,fontSize: 13),),
+                                  Text(
+                                    S.current.Please_input_password,
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 13),
+                                  ),
                                   GestureDetector(
-                                    onTap: (){
+                                    onTap: () {
                                       Navigator.of(context).pop();
                                     },
                                     child: Container(
                                       // color: Colors.white,
-                                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                      padding:
+                                          const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                       alignment: Alignment.centerRight,
-                                      child: const Icon(Icons.close,color: Colors.white,size: 20,),
+                                      child: const Icon(
+                                        Icons.close,
+                                        color: Colors.white,
+                                        size: 20,
+                                      ),
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                            const Divider(height: 2,color: APP_MainGrayColor,),
+                            const Divider(
+                              height: 2,
+                              color: APP_MainGrayColor,
+                            ),
                             Container(
-                              padding:const EdgeInsets.fromLTRB(20, 20, 20, 20),
+                              padding:
+                                  const EdgeInsets.fromLTRB(20, 20, 20, 20),
                               child: TextField(
                                 controller: pwdController,
-                                obscureText:true,
+                                obscureText: true,
                                 cursorColor: const Color(0xFF584ED3),
-                                style: const TextStyle(color: Colors.white,fontSize: 15,textBaseline: TextBaseline.alphabetic),
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    textBaseline: TextBaseline.alphabetic),
                                 decoration: InputDecoration(
                                   isDense: true,
-                                  contentPadding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                                  contentPadding:
+                                      const EdgeInsets.fromLTRB(10, 20, 10, 20),
                                   fillColor: Colors.white.withOpacity(0.05),
                                   filled: true,
                                   border: OutlineInputBorder(
@@ -253,59 +284,81 @@ class _EditWalletSettingPageState extends State<EditWalletSettingPage> {
                             const Expanded(child: SizedBox()),
                             InkWell(
                               onTap: () async {
-                                if(pwd == pwdController.text){
+                                if (pwd == pwdController.text) {
                                   Navigator.pop(context);
-                                  String mnemonic = suiWallet.decryptMnemonic("display",pwdController.text);
-                                  Navigator.pushNamed(context, "/ViewMnemonicPage",arguments: {
-                                    "mnemonic" : mnemonic,
-                                  });
-                                }else{
+                                  String mnemonic = suiWallet.decryptMnemonic(
+                                      "display", pwdController.text);
+                                  Navigator.pushNamed(
+                                      context, "/ViewMnemonicPage",
+                                      arguments: {
+                                        "mnemonic": mnemonic,
+                                      });
+                                } else {
                                   showMyCustomText(S.current.Wrong_Password);
                                 }
                               },
                               child: Container(
                                 decoration: const BoxDecoration(
                                   color: APP_MainPurpleColor,
-                                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5.0)),
                                 ),
                                 child: Container(
                                     width: 340,
                                     height: 48,
                                     alignment: Alignment.center,
-                                    child: Text(S.current.Confirm, style: const TextStyle(color: Colors.white, fontSize: 16,),
-                                    )
-                                ),
+                                    child: Text(
+                                      S.current.Confirm,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
+                                    )),
                               ),
                             ),
-                            const SizedBox(height: 20,),
+                            const SizedBox(
+                              height: 20,
+                            ),
                           ],
                         ),
                       );
                     },
                   );
                 },
-                child:Container(
+                child: Container(
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(S.current.View_mnemonics, style: const TextStyle(color: Colors.white,fontSize: 13),),
-                      const Icon(Icons.arrow_forward_ios_rounded,color: Colors.white,size: 14,)
+                      Text(
+                        S.current.View_mnemonics,
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 13),
+                      ),
+                      const Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: Colors.white,
+                        size: 14,
+                      )
                     ],
                   ),
                 ),
               ),
-              const Divider(height: 1,color: Colors.grey,),
+              const Divider(
+                height: 1,
+                color: Colors.grey,
+              ),
               const Expanded(child: SizedBox()),
               InkWell(
                 onTap: () async {
-                  if(suiWallet.wallets.length == 1){
-                    showMyCustomText("This is the last wallet that cannot be deleted");
+                  if (suiWallet.wallets.length == 1) {
+                    showMyCustomText(
+                        "This is the last wallet that cannot be deleted");
                     return;
-                  }else{
+                  } else {
                     suiWallet.deleteWallet(_data!.name!);
-                    Navigator.pop(context,{
-                      "name" : _data!.name!,
+                    Navigator.pop(context, {
+                      "name": _data!.name!,
                     });
                   }
                 },
@@ -320,9 +373,13 @@ class _EditWalletSettingPageState extends State<EditWalletSettingPage> {
                       width: 340,
                       height: 48,
                       alignment: Alignment.center,
-                      child: Text(S.current.Delete_Wallet, style: const TextStyle(color: Colors.red, fontSize: 16,),
-                      )
-                  ),
+                      child: Text(
+                        S.current.Delete_Wallet,
+                        style: const TextStyle(
+                          color: Colors.red,
+                          fontSize: 16,
+                        ),
+                      )),
                 ),
               ),
             ],

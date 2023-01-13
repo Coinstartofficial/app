@@ -1,5 +1,5 @@
-import 'package:coinstart_wallet_extension/Base/Global.dart';
-import 'package:coinstart_wallet_extension/Base/image_helper.dart';
+import 'package:coinstart_wallet_extension/base/Global.dart';
+import 'package:coinstart_wallet_extension/base/image_helper.dart';
 import 'package:coinstart_wallet_extension/dapp/page/dapp_page.dart';
 import 'package:coinstart_wallet_extension/generated/l10n.dart';
 import 'package:coinstart_wallet_extension/main.dart';
@@ -20,7 +20,8 @@ class HomePage extends StatefulWidget {
   createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
+class _HomePageState extends State<HomePage>
+    with AutomaticKeepAliveClientMixin {
   // SuiWalletController suiWallet = Get.find();
 
   String needUser = "0";
@@ -94,8 +95,8 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
     "/DAppPage",
     "/NFTIndexPage",
     "/SwapPageNew"
-    // "/TradePage",
-    "/SetupPage",
+        // "/TradePage",
+        "/SetupPage",
   ];
 
   @override
@@ -121,24 +122,22 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
             children: pages, // 禁止滑动
           ),
           bottomNavigationBar: BottomNavigationBar(
-            type:BottomNavigationBarType.fixed,
+            type: BottomNavigationBarType.fixed,
             items: const [
               BottomNavigationBarItem(
                 backgroundColor: Colors.transparent,
-
                 icon: Image(
-                      image: AssetImage("assets/images/tab_coin_after.png"),
-                      height: 27,
-                      width: 27,
-                    ),
+                  image: AssetImage("assets/images/tab_coin_after.png"),
+                  height: 27,
+                  width: 27,
+                ),
                 activeIcon: Image(
-                      image: AssetImage("assets/images/tab_coin_before.png"),
-                      height: 27,
-                      width: 27,
-                    ),
+                  image: AssetImage("assets/images/tab_coin_before.png"),
+                  height: 27,
+                  width: 27,
+                ),
                 label: "Wallet",
               ),
-
               BottomNavigationBarItem(
                 backgroundColor: Colors.transparent,
                 icon: Image(
@@ -147,14 +146,13 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
                   width: 27,
                   color: Colors.grey,
                 ),
-                activeIcon:  Image(
+                activeIcon: Image(
                   image: AssetImage("assets/images/tab_dapp_before.png"),
                   height: 27,
                   width: 27,
                 ),
                 label: "Dapp",
               ),
-
               BottomNavigationBarItem(
                 backgroundColor: Colors.white,
                 icon: Image(
@@ -163,43 +161,39 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
                   width: 27,
                   color: Colors.grey,
                 ),
-                activeIcon:  Image(
+                activeIcon: Image(
                   image: AssetImage("assets/images/tab_swap_before.png"),
                   height: 27,
                   width: 27,
                 ),
                 label: "Swap",
               ),
-
-              BottomNavigationBarItem(
-                backgroundColor: Colors.white,
-                icon:  Image(
-                      image: AssetImage("assets/images/tab_nft_after.png"),
-                      height: 27,
-                      width: 27,
-                    ),
-                activeIcon:
-                 Image(
-                      image: AssetImage("assets/images/tab_nft_before.png"),
-                      height: 27,
-                      width: 27,
-                    ),
-                label: "Colletion",
-              ),
-
-
               BottomNavigationBarItem(
                 backgroundColor: Colors.white,
                 icon: Image(
-                      image: AssetImage("assets/images/tab_discover_after.png"),
-                      height: 27,
-                      width: 27,
-                    ),
+                  image: AssetImage("assets/images/tab_nft_after.png"),
+                  height: 27,
+                  width: 27,
+                ),
                 activeIcon: Image(
-                      image: AssetImage("assets/images/tab_discover_before.png"),
-                      height: 27,
-                      width: 27,
-                    ),
+                  image: AssetImage("assets/images/tab_nft_before.png"),
+                  height: 27,
+                  width: 27,
+                ),
+                label: "Colletion",
+              ),
+              BottomNavigationBarItem(
+                backgroundColor: Colors.white,
+                icon: Image(
+                  image: AssetImage("assets/images/tab_discover_after.png"),
+                  height: 27,
+                  width: 27,
+                ),
+                activeIcon: Image(
+                  image: AssetImage("assets/images/tab_discover_before.png"),
+                  height: 27,
+                  width: 27,
+                ),
                 label: "Discover",
               ),
             ],
@@ -230,8 +224,6 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
     );
   }
 
-
-
   //创建MethodChannel
   // flutter_and_native_101 为通信标识
   // StandardMessageCodec() 为参数传递的 编码方式
@@ -252,5 +244,4 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
       });
     });*/
   }
-
 }

@@ -1,4 +1,4 @@
-import 'package:coinstart_wallet_extension/Base/Global.dart';
+import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:flutter/material.dart';
 import 'package:ones/ui.dart';
 
@@ -57,7 +57,8 @@ class _ForgotPasswordHomePageState extends State<ForgotPasswordHomePage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 44),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 44),
                 child: Column(
                   children: [
                     Container(

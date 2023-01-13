@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bip39/bip39.dart' as bip39;
-import 'package:coinstart_wallet_extension/Base/Global.dart';
+import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:coinstart_wallet_extension/base/MyBotTextToast.dart';
 import 'package:coinstart_wallet_extension/base/image_helper.dart';
 import 'package:coinstart_wallet_extension/generated/l10n.dart';
@@ -96,7 +96,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     );
   }
 
-  final TextEditingController mnemonicPasswordController = TextEditingController();
+  final TextEditingController mnemonicPasswordController =
+      TextEditingController();
   bool stepOneCheck = false;
 
   Widget stepOne() {
@@ -113,7 +114,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               alignment: Alignment.centerLeft,
               child: Text(
                 S.current.keep_your_mnemonic,
-                style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white),
+                style: const TextStyle(
+                    fontSize: 19,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white),
               ),
             ),
           ),
@@ -121,18 +125,21 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             controller: mnemonicPasswordController,
             cursorColor: APP_MainPurpleColor,
             maxLines: 6,
-            style: const TextStyle(color: Colors.white, fontSize: 13, height: 2),
+            style:
+                const TextStyle(color: Colors.white, fontSize: 13, height: 2),
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
               fillColor: APP_MainBlackColor,
               filled: true,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(5),
-                borderSide: const BorderSide(color: Color.fromRGBO(78, 79, 82, 1)),
+                borderSide:
+                    const BorderSide(color: Color.fromRGBO(78, 79, 82, 1)),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(5),
-                borderSide: const BorderSide(color: Color.fromRGBO(78, 79, 82, 1)),
+                borderSide:
+                    const BorderSide(color: Color.fromRGBO(78, 79, 82, 1)),
               ),
             ),
             onChanged: (e) {
@@ -170,9 +177,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           const Expanded(child: SizedBox()),
           InkWell(
             onTap: () async {
-              if (mnemonicPasswordController.text.isEmpty == false && (bip39.validateMnemonic(mnemonicPasswordController.text) == true)) {
+              if (mnemonicPasswordController.text.isEmpty == false &&
+                  (bip39.validateMnemonic(mnemonicPasswordController.text) ==
+                      true)) {
                 setState(() {
-                  _mnemonic = mnemonicPasswordController.text.trimLeft().trimRight();
+                  _mnemonic =
+                      mnemonicPasswordController.text.trimLeft().trimRight();
                   toDoStep = 2;
                 });
               } else {
@@ -182,7 +192,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             },
             child: Container(
               decoration: BoxDecoration(
-                color: mnemonicPasswordController.text.trimLeft().trimRight().split(" ").length == 12 ? APP_MainPurpleColor : APP_MainGrayColor,
+                color: mnemonicPasswordController.text
+                            .trimLeft()
+                            .trimRight()
+                            .split(" ")
+                            .length ==
+                        12
+                    ? APP_MainPurpleColor
+                    : APP_MainGrayColor,
                 borderRadius: const BorderRadius.all(Radius.circular(5.0)),
               ),
               child: Container(
@@ -225,28 +242,35 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               alignment: Alignment.centerLeft,
               child: Text(
                 S.current.Retrieve_password,
-                style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white),
+                style: const TextStyle(
+                    fontSize: 19,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white),
               ),
             ),
           ),
           TextField(
             controller: emailController,
             cursorColor: APP_MainPurpleColor,
-            style: const TextStyle(color: Colors.white, fontSize: 13, height: 2),
+            style:
+                const TextStyle(color: Colors.white, fontSize: 13, height: 2),
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
               fillColor: APP_MainBlackColor,
               filled: true,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(5),
-                borderSide: const BorderSide(color: Color.fromRGBO(78, 79, 82, 1)),
+                borderSide:
+                    const BorderSide(color: Color.fromRGBO(78, 79, 82, 1)),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(5),
-                borderSide: const BorderSide(color: Color.fromRGBO(78, 79, 82, 1)),
+                borderSide:
+                    const BorderSide(color: Color.fromRGBO(78, 79, 82, 1)),
               ),
               hintText: S.current.Forgot_Password_Tip3,
-              hintStyle: const TextStyle(fontSize: 14, color: APP_MainTextGrayColor, height: 1.5),
+              hintStyle: const TextStyle(
+                  fontSize: 14, color: APP_MainTextGrayColor, height: 1.5),
             ),
             onChanged: (e) {
               setState(() {
@@ -276,7 +300,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             },
             child: Container(
               decoration: BoxDecoration(
-                color: isPassTwo ? (canTouch ? APP_MainPurpleColor : APP_MainGrayColor) : APP_MainGrayColor,
+                color: isPassTwo
+                    ? (canTouch ? APP_MainPurpleColor : APP_MainGrayColor)
+                    : APP_MainGrayColor,
                 borderRadius: const BorderRadius.all(Radius.circular(5.0)),
               ),
               child: Container(
@@ -315,7 +341,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             padding: const EdgeInsets.fromLTRB(20, 30, 20, 5),
             child: Text(
               S.current.Forgot_Password_Tip4,
-              style: const TextStyle(fontSize: 15, color: Colors.white, height: 1.3),
+              style: const TextStyle(
+                  fontSize: 15, color: Colors.white, height: 1.3),
               textAlign: TextAlign.center,
             ),
           ),
@@ -324,7 +351,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
             child: Text(
               emailController.text,
-              style: const TextStyle(fontSize: 15, color: APP_MainPurpleColor, height: 1.3),
+              style: const TextStyle(
+                  fontSize: 15, color: APP_MainPurpleColor, height: 1.3),
               textAlign: TextAlign.center,
             ),
           ),

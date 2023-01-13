@@ -1,5 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
-import 'package:coinstart_wallet_extension/Base/routes.dart';
+import 'package:coinstart_wallet_extension/base/routes.dart';
 import 'package:coinstart_wallet_extension/api/sui_api.dart';
 import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:coinstart_wallet_extension/controller/sui_wallet_controller.dart';

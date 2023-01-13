@@ -1,10 +1,11 @@
-import 'package:coinstart_wallet_extension/Base/Global.dart';
+import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:coinstart_wallet_extension/controller/sui_wallet_controller.dart';
 import 'package:coinstart_wallet_extension/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:neveruseless/neveruseless.dart';
 
 import '../../main.dart';
+
 class SelectLanguagePage extends StatefulWidget {
   final Map? arguments;
   const SelectLanguagePage({Key? key, this.arguments}) : super(key: key);
@@ -14,9 +15,6 @@ class SelectLanguagePage extends StatefulWidget {
 }
 
 class _SelectLanguagePageState extends State<SelectLanguagePage> {
-
-
-
   @override
   void initState() {
     super.initState();
@@ -27,7 +25,6 @@ class _SelectLanguagePageState extends State<SelectLanguagePage> {
   void dispose() {
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,32 +42,43 @@ class _SelectLanguagePageState extends State<SelectLanguagePage> {
           child: ListView(
             children: [
               InkWell(
-                onTap: (){
-                  neverBus.emit("checkLanguage","en");
-                  setState(() {
-
-                  });
+                onTap: () {
+                  neverBus.emit("checkLanguage", "en");
+                  setState(() {});
                 },
                 child: Container(
-                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 20),
-                  alignment: Alignment.centerLeft,
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        child: Text("English",style: TextStyle(fontSize: 14,color: Colors.white),),
-                      ),
-                      localNow == "English" ? const Image(image: AssetImage("assets/images/netword_done.png"),width: 16,height: 16,) : const SizedBox(width: 16,height: 16,),
-                    ],
-                  )
-                ),
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      children: [
+                        const Expanded(
+                          child: Text(
+                            "English",
+                            style: TextStyle(fontSize: 14, color: Colors.white),
+                          ),
+                        ),
+                        localNow == "English"
+                            ? const Image(
+                                image: AssetImage(
+                                    "assets/images/netword_done.png"),
+                                width: 16,
+                                height: 16,
+                              )
+                            : const SizedBox(
+                                width: 16,
+                                height: 16,
+                              ),
+                      ],
+                    )),
               ),
-              const Divider(height: 1,color: Colors.grey,),
+              const Divider(
+                height: 1,
+                color: Colors.grey,
+              ),
               InkWell(
-                onTap: (){
-                  neverBus.emit("checkLanguage","zh");
-                  setState(() {
-
-                  });
+                onTap: () {
+                  neverBus.emit("checkLanguage", "zh");
+                  setState(() {});
                 },
                 child: Container(
                     padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
@@ -78,14 +86,29 @@ class _SelectLanguagePageState extends State<SelectLanguagePage> {
                     child: Row(
                       children: [
                         const Expanded(
-                          child: Text("中文简体",style: TextStyle(fontSize: 14,color: Colors.white),),
+                          child: Text(
+                            "中文简体",
+                            style: TextStyle(fontSize: 14, color: Colors.white),
+                          ),
                         ),
-                        localNow == "中文简体" ? const Image(image: AssetImage("assets/images/netword_done.png"),width: 16,height: 16,) : const SizedBox(width: 16,height: 16,),
+                        localNow == "中文简体"
+                            ? const Image(
+                                image: AssetImage(
+                                    "assets/images/netword_done.png"),
+                                width: 16,
+                                height: 16,
+                              )
+                            : const SizedBox(
+                                width: 16,
+                                height: 16,
+                              ),
                       ],
-                    )
-                ),
+                    )),
               ),
-              const Divider(height: 1,color: Colors.grey,),
+              const Divider(
+                height: 1,
+                color: Colors.grey,
+              ),
             ],
           ),
         ),

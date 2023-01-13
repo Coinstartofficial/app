@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:coinstart_wallet_extension/Base/Global.dart';
+import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:coinstart_wallet_extension/base/MyBotTextToast.dart';
 import 'package:coinstart_wallet_extension/generated/l10n.dart';
 import 'package:coinstart_wallet_extension/home_page.dart';
@@ -29,13 +29,12 @@ class _NeedPasswordPageState extends State<NeedPasswordPage> {
     PagePick.nowPageName = '/NeedPasswordPage';
 
     neverLocalStorageRead("recovery_flow").then((v) {
-      if(v!='null'){
-        Navigator.pushNamed(context, "/FindPasswordCodePage",arguments: {
+      if (v != 'null') {
+        Navigator.pushNamed(context, "/FindPasswordCodePage", arguments: {
           "recovery_flow": v,
         });
       }
     });
-
 
     checkLock();
     loadPwa();
@@ -104,13 +103,15 @@ class _NeedPasswordPageState extends State<NeedPasswordPage> {
                             child: Stack(
                               children: [
                                 const Image(
-                                  image: AssetImage("assets/images/index_icon.png"),
+                                  image: AssetImage(
+                                      "assets/images/index_icon.png"),
                                   fit: BoxFit.contain,
                                   width: 124,
                                   height: 124,
                                 ),
                                 BackdropFilter(
-                                  filter: ImageFilter.blur(sigmaX: 0.4, sigmaY: 0.4),
+                                  filter: ImageFilter.blur(
+                                      sigmaX: 0.4, sigmaY: 0.4),
                                   child: const SizedBox(),
                                 ),
                               ],
@@ -133,7 +134,10 @@ class _NeedPasswordPageState extends State<NeedPasswordPage> {
                           padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                           child: const Text(
                             "OpenSui",
-                            style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.w600),
+                            style: TextStyle(
+                                fontSize: 28,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
                           ),
                         ),
                         Container(
@@ -143,18 +147,22 @@ class _NeedPasswordPageState extends State<NeedPasswordPage> {
                             obscureText: true,
                             controller: passwordController,
                             cursorColor: APP_MainPurpleColor,
-                            style: const TextStyle(color: Colors.white, fontSize: 13, height: 1),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 13, height: 1),
                             decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                              contentPadding:
+                                  const EdgeInsets.fromLTRB(20, 0, 20, 0),
                               fillColor: APP_MainBlackColor,
                               filled: true,
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
-                                borderSide: const BorderSide(color: Color.fromRGBO(78, 79, 82, 1)),
+                                borderSide: const BorderSide(
+                                    color: Color.fromRGBO(78, 79, 82, 1)),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
-                                borderSide: const BorderSide(color: Color.fromRGBO(78, 79, 82, 1)),
+                                borderSide: const BorderSide(
+                                    color: Color.fromRGBO(78, 79, 82, 1)),
                               ),
                             ),
                             onChanged: (e) {},
@@ -172,18 +180,22 @@ class _NeedPasswordPageState extends State<NeedPasswordPage> {
                               if (passwordController.text == localPwa) {
                                 showMyCustomLoading("Loading...");
                                 neverLocalStorageRemove('isLock');
-                                Future.delayed(const Duration(seconds: 1)).then((onValue) async {
+                                Future.delayed(const Duration(seconds: 1))
+                                    .then((onValue) async {
                                   closeMyCustomBotLoading();
                                   Navigator.of(context).pushReplacement(
                                     PageRouteBuilder(
-                                      pageBuilder: (_, __, ___) => const HomePage(),
-                                      transitionDuration: const Duration(seconds: 0),
+                                      pageBuilder: (_, __, ___) =>
+                                          const HomePage(),
+                                      transitionDuration:
+                                          const Duration(seconds: 0),
                                     ),
                                   );
                                 });
-                              }else{
+                              } else {
                                 showMyCustomLoading('Password is error');
-                                Future.delayed(const Duration(seconds: 1)).then((onValue) async {
+                                Future.delayed(const Duration(seconds: 1))
+                                    .then((onValue) async {
                                   closeMyCustomBotLoading();
                                 });
                               }
@@ -191,7 +203,8 @@ class _NeedPasswordPageState extends State<NeedPasswordPage> {
                             child: Container(
                               decoration: const BoxDecoration(
                                 color: APP_MainPurpleColor,
-                                borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(7.0)),
                               ),
                               // padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
                               // margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
@@ -199,7 +212,10 @@ class _NeedPasswordPageState extends State<NeedPasswordPage> {
                               alignment: Alignment.center,
                               child: const Text(
                                 'unlock',
-                                style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w700),
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w700),
                               ),
                             ),
                           ),
@@ -215,7 +231,8 @@ class _NeedPasswordPageState extends State<NeedPasswordPage> {
                           child: GestureDetector(
                             onTap: () async {
                               // suiWallet.deleteWallet();
-                              Navigator.pushNamed(context, "/ForgotPasswordHomePage");
+                              Navigator.pushNamed(
+                                  context, "/ForgotPasswordHomePage");
                             },
                             child: const Text(
                               'Forgot Password',

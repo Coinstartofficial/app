@@ -1,9 +1,10 @@
-import 'package:coinstart_wallet_extension/Base/Global.dart';
+import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:coinstart_wallet_extension/base/image_helper.dart';
 import 'package:flutter/material.dart';
 
 import '../../generated/l10n.dart';
 import '../../main.dart';
+
 class NodeSettingPage extends StatefulWidget {
   final Map? arguments;
   const NodeSettingPage({Key? key, this.arguments}) : super(key: key);
@@ -13,8 +14,6 @@ class NodeSettingPage extends StatefulWidget {
 }
 
 class _NodeSettingPageState extends State<NodeSettingPage> {
-
-
   @override
   void initState() {
     super.initState();
@@ -34,14 +33,14 @@ class _NodeSettingPageState extends State<NodeSettingPage> {
       left: true,
       top: false,
       child: Scaffold(
-        body:Column(
+        body: Column(
           children: [
             Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: GestureDetector(
                   behavior: HitTestBehavior.opaque,
-                  onTap: (){
+                  onTap: () {
                     Navigator.pop(context);
                   },
                   child: Row(
@@ -51,41 +50,51 @@ class _NodeSettingPageState extends State<NodeSettingPage> {
                           color: Color.fromRGBO(34, 35, 39, 1),
                           borderRadius: BorderRadius.all(Radius.circular(3.0)),
                         ),
-                        child: const Icon(Icons.chevron_left,color: Colors.white,),
+                        child: const Icon(
+                          Icons.chevron_left,
+                          color: Colors.white,
+                        ),
                       ),
-                      const SizedBox(width: 5,),
-                      Text(S.current.Node_settings, style: TextStyle(color: Colors.white, fontSize: 14),),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        S.current.Node_settings,
+                        style: TextStyle(color: Colors.white, fontSize: 14),
+                      ),
                     ],
-                  )
-              ),
+                  )),
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context,index){
-                  return Container(
-                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(5),
-                          child: Text('${S.current.Node_Name}${index.toString()}', style: const TextStyle(color: Colors.white, fontSize: 13,),
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(5),
+                            child: Text(
+                              '${S.current.Node_Name}${index.toString()}',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 13,
+                              ),
+                            ),
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: (){
-
-                          },
-                          behavior: HitTestBehavior.opaque,
-                          child: const SvgHelper('/icons/node_setting_check.svg'),
-                        )
-                      ],
-                    ),
-                  );
-                }
-              ),
+                          GestureDetector(
+                            onTap: () {},
+                            behavior: HitTestBehavior.opaque,
+                            child: const SvgHelper(
+                                '/icons/node_setting_check.svg'),
+                          )
+                        ],
+                      ),
+                    );
+                  }),
             ),
             Container(
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
@@ -103,7 +112,13 @@ class _NodeSettingPageState extends State<NodeSettingPage> {
                     borderRadius: BorderRadius.circular(7.0),
                   ), // NEW
                 ),
-                child: Text(S.current.Confirm, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 18,),
+                child: Text(
+                  S.current.Confirm,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 18,
+                  ),
                 ),
               ),
             ),

@@ -1,4 +1,4 @@
-import 'package:coinstart_wallet_extension/Base/Global.dart';
+import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:coinstart_wallet_extension/controller/sui_wallet_controller.dart';
 import 'package:coinstart_wallet_extension/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -72,7 +72,8 @@ class _SelectWalletPageState extends State<SelectWalletPage> {
                           children: [
                             selectIndex == index
                                 ? const Image(
-                                    image: AssetImage("assets/images/netword_done.png"),
+                                    image: AssetImage(
+                                        "assets/images/netword_done.png"),
                                     width: 16,
                                     height: 16,
                                   )
@@ -83,23 +84,30 @@ class _SelectWalletPageState extends State<SelectWalletPage> {
                             Expanded(
                               child: InkWell(
                                 onTap: () {
-                                  neverLocalStorageWrite("NowAddressKey", _walletList![index].name!);
-                                  Future.delayed(const Duration(seconds: 0)).then((onValue) async {
-                                    Navigator.pushNamedAndRemoveUntil(context, "/NeedPasswordPage", (route) => false);
+                                  neverLocalStorageWrite("NowAddressKey",
+                                      _walletList![index].name!);
+                                  Future.delayed(const Duration(seconds: 0))
+                                      .then((onValue) async {
+                                    Navigator.pushNamedAndRemoveUntil(context,
+                                        "/NeedPasswordPage", (route) => false);
                                   });
                                 },
                                 child: Row(
                                   children: [
                                     Container(
-                                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 0, 10, 0),
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(99),
                                         child: Image(
-                                          image: const AssetImage("assets/images/coinstart_logo_white.png"),
+                                          image: const AssetImage(
+                                              "assets/images/coinstart_logo_white.png"),
                                           width: 26,
                                           height: 26,
                                           fit: BoxFit.contain,
-                                          errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                                          errorBuilder: (BuildContext context,
+                                              Object exception,
+                                              StackTrace? stackTrace) {
                                             return Container(
                                               width: 26,
                                               height: 26,
@@ -107,7 +115,8 @@ class _SelectWalletPageState extends State<SelectWalletPage> {
                                               alignment: Alignment.center,
                                               child: Icon(
                                                 Icons.sms_failed_rounded,
-                                                color: Colors.grey.withOpacity(0.2),
+                                                color: Colors.grey
+                                                    .withOpacity(0.2),
                                               ),
                                             );
                                           },
@@ -117,19 +126,24 @@ class _SelectWalletPageState extends State<SelectWalletPage> {
                                     Expanded(
                                       child: Container(
                                         alignment: Alignment.centerLeft,
-                                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
                                         child: Text(
                                           _walletList![index].name!,
-                                          style: const TextStyle(fontSize: 14, color: Colors.white),
+                                          style: const TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.white),
                                         ),
                                       ),
                                     ),
                                     Container(
                                       alignment: Alignment.centerLeft,
-                                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 0, 0, 0),
                                       child: const Text(
                                         "\$0.00",
-                                        style: TextStyle(fontSize: 14, color: Colors.white),
+                                        style: TextStyle(
+                                            fontSize: 14, color: Colors.white),
                                       ),
                                     ),
                                   ],
@@ -138,14 +152,21 @@ class _SelectWalletPageState extends State<SelectWalletPage> {
                             ),
                             InkWell(
                               onTap: () {
-                                Navigator.pushNamed(context, "/EditWalletSettingPage", arguments: {
-                                  "data": _walletList![index],
-                                }).then((value) {
+                                Navigator.pushNamed(
+                                    context, "/EditWalletSettingPage",
+                                    arguments: {
+                                      "data": _walletList![index],
+                                    }).then((value) {
                                   try {
                                     Map map = value as Map;
-                                    _walletList!.removeWhere((element) => element.name == map["name"]);
+                                    _walletList!.removeWhere((element) =>
+                                        element.name == map["name"]);
                                     if (_walletList!.isNotEmpty) {
-                                      selectIndex = _walletList!.indexWhere((element) => element.address == suiWallet.currentWalletAddress.toString());
+                                      selectIndex = _walletList!.indexWhere(
+                                          (element) =>
+                                              element.address ==
+                                              suiWallet.currentWalletAddress
+                                                  .toString());
                                       if (selectIndex == -1) {
                                         selectIndex = 0;
                                       }

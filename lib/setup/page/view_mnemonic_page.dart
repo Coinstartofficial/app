@@ -1,4 +1,4 @@
-import 'package:coinstart_wallet_extension/Base/Global.dart';
+import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:coinstart_wallet_extension/base/MyBotTextToast.dart';
 import 'package:coinstart_wallet_extension/base/image_helper.dart';
 import 'package:coinstart_wallet_extension/generated/l10n.dart';
@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../main.dart';
+
 class ViewMnemonicPage extends StatefulWidget {
   final Map? arguments;
   const ViewMnemonicPage({Key? key, this.arguments}) : super(key: key);
@@ -15,7 +16,6 @@ class ViewMnemonicPage extends StatefulWidget {
 }
 
 class _ViewMnemonicPageState extends State<ViewMnemonicPage> {
-
   String mnemonic = "";
   List<String>? mnemonicList;
   @override
@@ -42,7 +42,7 @@ class _ViewMnemonicPageState extends State<ViewMnemonicPage> {
           appBar: AppBar(
             title: Text(S.current.View_mnemonics),
           ),
-          body:ListView(
+          body: ListView(
             children: [
               Container(
                 decoration: const BoxDecoration(
@@ -50,7 +50,7 @@ class _ViewMnemonicPageState extends State<ViewMnemonicPage> {
                   borderRadius: BorderRadius.all(Radius.circular(7.0)),
                 ),
                 margin: const EdgeInsets.fromLTRB(20, 40, 20, 0),
-                padding:const EdgeInsets.fromLTRB(10, 20, 10, 10),
+                padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
                 child: Column(
                   children: [
                     GridView.count(
@@ -69,11 +69,20 @@ class _ViewMnemonicPageState extends State<ViewMnemonicPage> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text('${index + 1}', style: const TextStyle(color: Color.fromRGBO(158, 157, 157,1),),),
+                                Text(
+                                  '${index + 1}',
+                                  style: const TextStyle(
+                                    color: Color.fromRGBO(158, 157, 157, 1),
+                                  ),
+                                ),
                                 const SizedBox(width: 20),
                                 Container(
-                                  padding: const EdgeInsets.fromLTRB(0 , 0, 0, 5),
-                                  child: SelectableText(mnemonicList![index], style: const TextStyle(color: Colors.white),),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                                  child: SelectableText(
+                                    mnemonicList![index],
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
                                 )
                               ],
                             ),
@@ -85,7 +94,7 @@ class _ViewMnemonicPageState extends State<ViewMnemonicPage> {
                       padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
                       alignment: Alignment.centerRight,
                       child: GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           Clipboard.setData(ClipboardData(text: mnemonic));
                           showMyCustomCopyText(S.current.Copy_successfully);
                         },
@@ -97,9 +106,14 @@ class _ViewMnemonicPageState extends State<ViewMnemonicPage> {
                           // padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                           decoration: const BoxDecoration(
                             color: APP_MainBgViewColor,
-                            borderRadius: BorderRadius.all(Radius.circular(6.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(6.0)),
                           ),
-                          child: Text(S.current.Copy,style: const TextStyle(fontSize: 14,color: Colors.white),),
+                          child: Text(
+                            S.current.Copy,
+                            style: const TextStyle(
+                                fontSize: 14, color: Colors.white),
+                          ),
                         ),
                       ),
                     )
@@ -107,9 +121,7 @@ class _ViewMnemonicPageState extends State<ViewMnemonicPage> {
                 ),
               ),
             ],
-          )
-      ),
+          )),
     );
   }
 }
-
