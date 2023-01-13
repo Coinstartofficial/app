@@ -9,6 +9,7 @@ class AppIcons {
   static const String welcome_logo = 'assets/images/welcome_logo.png';
   static const String welcome_line = 'assets/images/welcome_line.png';
   static const String register_done = 'assets/images/register_done.png';
+  static const String setup_rectangle = 'assets/images/setup_rectangle.png';
 }
 
 class AppColors {
@@ -16,6 +17,7 @@ class AppColors {
   static const Color color_ffffff = Color(0xffffffff);
   static const Color color_212937 = Color(0xff212937);
   static const Color color_ac8af8 = Color(0xffac8af8);
+  static const Color color_6c6771 = Color(0xff6c6771);
 }
 
 class Themes {

@@ -4,8 +4,10 @@ import 'package:coinstart_wallet_extension/common/routes/app_pages.dart';
 import 'package:coinstart_wallet_extension/common/style/styles.dart';
 import 'package:coinstart_wallet_extension/generated/l10n.dart';
 import 'package:coinstart_wallet_extension/ui/login/setup/setup_controller.dart';
-import 'package:coinstart_wallet_extension/ui/login/setup/setup_loading.dart';
-import 'package:coinstart_wallet_extension/ui/login/setup/setup_success.dart';
+import 'package:coinstart_wallet_extension/ui/login/setup/widget/setup_loading.dart';
+import 'package:coinstart_wallet_extension/ui/login/setup/widget/setup_notice.dart';
+import 'package:coinstart_wallet_extension/ui/login/setup/widget/setup_result.dart';
+import 'package:coinstart_wallet_extension/ui/login/setup/widget/setup_success.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
@@ -112,12 +114,23 @@ class SetUpPage extends GetView<SetUpController> {
                     height: 10,
                   ),
                   InkWell(
-                    onTap: () {
-                      Get.generalDialog(pageBuilder: (context, __, ___) => SetUpLoading());
-                      Future.delayed(const Duration(milliseconds: 3000), () {
+                    onTap: () async {
+                      Get.generalDialog(
+                        pageBuilder: (context, __, ___) => const SetUpLoading(),
+                      );
+                      var mnemonic = await controller.doGenerateMnemonic();
+                      if (mnemonic != null) {
+                        Future.delayed(const Duration(milliseconds: 1000), () {
+                          Get.back();
+                          Get.generalDialog(pageBuilder: (context, __, ___) => const SetUpSuccess());
+                          Future.delayed(const Duration(milliseconds: 3000), () {
+                            Get.back();
+                            Get.toNamed(Routes.SETUP_RESULT, arguments: {'mnemonic': mnemonic});
+                          });
+                        });
+                      } else {
                         Get.back();
-                        Get.generalDialog(pageBuilder: (context, __, ___) => SetUpSuccess());
-                      });
+                      }
                     },
                     child: Container(
                       margin: const EdgeInsets.symmetric(horizontal: 52).copyWith(top: 38),
