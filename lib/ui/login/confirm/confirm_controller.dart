@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:coinstart_wallet_extension/base/MyBotTextToast.dart';
 import 'package:coinstart_wallet_extension/common/routes/app_pages.dart';
+import 'package:coinstart_wallet_extension/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -54,7 +55,7 @@ class ConfirmController extends GetxController {
     if (check()) {
       Get.toNamed(Routes.INPUT_PASS, arguments: argument);
     } else {
-      showMyCustomText('验证不通过');
+      showMyCustomText(S.current.Verify_Mnemonic_Phrase_Tip);
     }
   }
 
