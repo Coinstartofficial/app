@@ -1,4 +1,4 @@
-import 'package:coinstart_wallet_extension/Base/Global.dart';
+import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:coinstart_wallet_extension/base/image_helper.dart';
 import 'package:coinstart_wallet_extension/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,8 @@ class TradePage extends StatefulWidget {
   createState() => _TradePageState();
 }
 
-class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixin {
+class _TradePageState extends State<TradePage>
+    with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
@@ -86,7 +87,8 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                     padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                     child: Text(
                       S.current.Swap_Record,
-                      style: const TextStyle(color: Color(0xffBEBEBE), fontSize: 13),
+                      style: const TextStyle(
+                          color: Color(0xffBEBEBE), fontSize: 13),
                     ),
                   ),
                 )
@@ -110,7 +112,8 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                         },
                         child: Container(
                           height: 107,
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(17),
                             color: const Color(0xff1E1E1E),
@@ -123,7 +126,10 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                                 children: [
                                   const Text(
                                     'Sell',
-                                    style: TextStyle(color: Color(0xffFCFCFC), fontSize: 14, fontWeight: FontWeight.w500),
+                                    style: TextStyle(
+                                        color: Color(0xffFCFCFC),
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   const SizedBox(
                                     height: 10,
@@ -139,18 +145,24 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                                         width: 8,
                                       ),
                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Row(
                                             children: [
                                               Text(
                                                 fromCoin,
-                                                style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700),
+                                                style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 22,
+                                                    fontWeight:
+                                                        FontWeight.w700),
                                               ),
                                               const SizedBox(
                                                 width: 5,
                                               ),
-                                              const ImageHelper('/icons/arrow_down.png'),
+                                              const ImageHelper(
+                                                  '/icons/arrow_down.png'),
                                             ],
                                           ),
                                           const SizedBox(
@@ -158,7 +170,10 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                                           ),
                                           Text(
                                             fromCoin,
-                                            style: const TextStyle(color: Color(0xff737373), fontSize: 12, fontWeight: FontWeight.w400),
+                                            style: const TextStyle(
+                                                color: Color(0xff737373),
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400),
                                           ),
                                         ],
                                       )
@@ -180,7 +195,10 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                                       ),
                                       const Text(
                                         '0',
-                                        style: TextStyle(color: Color(0xff737373), fontSize: 14, fontWeight: FontWeight.w500),
+                                        style: TextStyle(
+                                            color: Color(0xff737373),
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500),
                                       ),
                                     ],
                                   ),
@@ -189,7 +207,10 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                                   ),
                                   const Text(
                                     '1',
-                                    style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700),
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w700),
                                   ),
                                   // const SizedBox(
                                   //   height: 5,
@@ -214,9 +235,13 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                         child: Container(
                           // width: 400 - 20 - 20,
                           height: 107,
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                          decoration:
-                              BoxDecoration(borderRadius: BorderRadius.circular(17), color: const Color(0xff1E1E1E), border: Border.all(color: const Color(0xff303030), width: 1)),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(17),
+                              color: const Color(0xff1E1E1E),
+                              border: Border.all(
+                                  color: const Color(0xff303030), width: 1)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -225,7 +250,10 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                                 children: [
                                   const Text(
                                     'Buy',
-                                    style: TextStyle(color: Color(0xffFCFCFC), fontSize: 14, fontWeight: FontWeight.w500),
+                                    style: TextStyle(
+                                        color: Color(0xffFCFCFC),
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   const SizedBox(
                                     height: 10,
@@ -241,18 +269,24 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                                         width: 8,
                                       ),
                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Row(
                                             children: [
                                               Text(
                                                 toCoin,
-                                                style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700),
+                                                style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 22,
+                                                    fontWeight:
+                                                        FontWeight.w700),
                                               ),
                                               const SizedBox(
                                                 width: 5,
                                               ),
-                                              const ImageHelper('/icons/arrow_down.png'),
+                                              const ImageHelper(
+                                                  '/icons/arrow_down.png'),
                                             ],
                                           ),
                                           const SizedBox(
@@ -260,7 +294,10 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                                           ),
                                           Text(
                                             toCoin,
-                                            style: const TextStyle(color: Color(0xff737373), fontSize: 12, fontWeight: FontWeight.w400),
+                                            style: const TextStyle(
+                                                color: Color(0xff737373),
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400),
                                           ),
                                         ],
                                       )
@@ -282,7 +319,10 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                                       ),
                                       const Text(
                                         '0',
-                                        style: TextStyle(color: Color(0xff737373), fontSize: 14, fontWeight: FontWeight.w500),
+                                        style: TextStyle(
+                                            color: Color(0xff737373),
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500),
                                       ),
                                     ],
                                   ),
@@ -291,7 +331,10 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                                   ),
                                   const Text(
                                     '1',
-                                    style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700),
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w700),
                                   ),
                                   // const SizedBox(
                                   //   height: 5,
@@ -343,7 +386,10 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                 alignment: Alignment.center,
                 child: const Text(
                   'Insufficient balance',
-                  style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700),
                 ),
               ),
             ),
@@ -357,7 +403,10 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
               children: [
                 Text(
                   '1 $fromCoin ≈ 1 $toCoin ',
-                  style: const TextStyle(color: Color(0xff737373), fontSize: 14, fontWeight: FontWeight.w700),
+                  style: const TextStyle(
+                      color: Color(0xff737373),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700),
                 ),
               ],
             )
@@ -454,7 +503,8 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                         ),
                         Text(
                           "Select token to ${fromTO == 'to' ? 'buy' : 'sell'}",
-                          style: const TextStyle(color: Colors.white, fontSize: 16),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 16),
                         ),
                         GestureDetector(
                           onTap: () {
@@ -485,10 +535,14 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                     child: TextField(
                       controller: searchController,
                       cursorColor: const Color(0xFF584ED3),
-                      style: const TextStyle(color: Colors.white, fontSize: 12, textBaseline: TextBaseline.alphabetic),
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          textBaseline: TextBaseline.alphabetic),
                       decoration: InputDecoration(
                         isDense: true,
-                        contentPadding: const EdgeInsets.fromLTRB(10, 0, 10, 20),
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(10, 0, 10, 20),
                         fillColor: Color(0xff1E1E1E),
                         filled: true,
                         border: OutlineInputBorder(
@@ -510,7 +564,11 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                           tempCoinList.addAll(allCoinList);
                         } else {
                           tempCoinList.clear();
-                          tempCoinList.addAll(allCoinList.where((element) => element.toString().toUpperCase().contains(coin.toString().toUpperCase())));
+                          tempCoinList.addAll(allCoinList.where((element) =>
+                              element
+                                  .toString()
+                                  .toUpperCase()
+                                  .contains(coin.toString().toUpperCase())));
                         }
                         setState(() {});
                         mSetState(() {});
@@ -534,7 +592,8 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                               setState(() {});
                             },
                             child: Container(
-                              padding: const EdgeInsets.fromLTRB(20, 18, 10, 20),
+                              padding:
+                                  const EdgeInsets.fromLTRB(20, 18, 10, 20),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -549,7 +608,10 @@ class _TradePageState extends State<TradePage> with AutomaticKeepAliveClientMixi
                                   ),
                                   Text(
                                     coin,
-                                    style: const TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w600),
+                                    style: const TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
                                   ),
                                 ],
                               ),

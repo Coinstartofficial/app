@@ -1,9 +1,10 @@
-import 'package:coinstart_wallet_extension/Base/Global.dart';
+import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:coinstart_wallet_extension/base/image_helper.dart';
 import 'package:flutter/material.dart';
 
 import '../../generated/l10n.dart';
 import '../../main.dart';
+
 class SwapPage extends StatefulWidget {
   final Map? arguments;
   const SwapPage({Key? key, this.arguments}) : super(key: key);
@@ -13,7 +14,6 @@ class SwapPage extends StatefulWidget {
 }
 
 class _SwapPageState extends State<SwapPage> {
-
   List allCoinList = [
     "ETH",
     "SUI",
@@ -29,7 +29,6 @@ class _SwapPageState extends State<SwapPage> {
   String fromCoin = "ETH";
 
   String toCoin = "USDT";
-
 
   @override
   void initState() {
@@ -55,24 +54,27 @@ class _SwapPageState extends State<SwapPage> {
           actions: [
             GestureDetector(
               behavior: HitTestBehavior.opaque,
-              onTap: (){
+              onTap: () {
                 Navigator.pushNamed(context, "/SwapRecordPage");
               },
               child: Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                child: Text(S.current.Swap_Record, style: const TextStyle(color: Colors.white, fontSize: 13),),
+                child: Text(
+                  S.current.Swap_Record,
+                  style: const TextStyle(color: Colors.white, fontSize: 13),
+                ),
               ),
             ),
           ],
         ),
-        body:Column(
+        body: Column(
           children: [
             Container(
               height: 230,
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Stack(
-                alignment: const Alignment(0,-0.04),
+                alignment: const Alignment(0, -0.04),
                 children: [
                   // 支付
                   Column(
@@ -95,25 +97,56 @@ class _SwapPageState extends State<SwapPage> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text('Pay', style: TextStyle(color: Color(0xff737373), fontSize: 14, fontWeight: FontWeight.w500),),
-                                  const SizedBox(height: 10,),
+                                  const Text(
+                                    'Pay',
+                                    style: TextStyle(
+                                        color: Color(0xff737373),
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
                                   Row(
                                     children: [
-                                      ImageHelper('/icons/crypto/$fromCoin.png', width: 38, height: 38,),
-                                      const SizedBox(width: 8,),
+                                      ImageHelper(
+                                        '/icons/crypto/$fromCoin.png',
+                                        width: 38,
+                                        height: 38,
+                                      ),
+                                      const SizedBox(
+                                        width: 8,
+                                      ),
                                       Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Row(
                                             children: [
-                                              Text(fromCoin, style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700),),
-                                              const SizedBox(width: 5,),
-                                              const ImageHelper('/icons/arrow_down.png'),
+                                              Text(
+                                                fromCoin,
+                                                style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 22,
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                              ),
+                                              const SizedBox(
+                                                width: 5,
+                                              ),
+                                              const ImageHelper(
+                                                  '/icons/arrow_down.png'),
                                             ],
                                           ),
-                                          const SizedBox(height: 5,),
-                                          Text(fromCoin, style: const TextStyle(color: Color(0xff737373), fontSize: 12, fontWeight: FontWeight.w400),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            fromCoin,
+                                            style: const TextStyle(
+                                                color: Color(0xff737373),
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400),
                                           ),
                                         ],
                                       )
@@ -126,22 +159,51 @@ class _SwapPageState extends State<SwapPage> {
                                 children: [
                                   Row(
                                     children: [
-                                      Image.asset('assets/images/cash_transaction_package.png', width: 10,),
-                                      const SizedBox(width: 4,),
-                                      const Text('0', style: TextStyle(color: Color(0xff737373), fontSize: 14, fontWeight: FontWeight.w500),),
+                                      Image.asset(
+                                        'assets/images/cash_transaction_package.png',
+                                        width: 10,
+                                      ),
+                                      const SizedBox(
+                                        width: 4,
+                                      ),
+                                      const Text(
+                                        '0',
+                                        style: TextStyle(
+                                            color: Color(0xff737373),
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500),
+                                      ),
                                     ],
                                   ),
-                                  const SizedBox(height: 10,),
-                                  const Text('1', style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700),),
-                                  const SizedBox(height: 5,),
-                                  const Text('\$1,141.87', style: TextStyle(color: Color(0xff737373), fontSize: 12, fontWeight: FontWeight.w400),),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  const Text(
+                                    '1',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  const Text(
+                                    '\$1,141.87',
+                                    style: TextStyle(
+                                        color: Color(0xff737373),
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400),
+                                  ),
                                 ],
                               ),
                             ],
                           ),
                         ),
                       ),
-                      const SizedBox(height: 6,),
+                      const SizedBox(
+                        height: 6,
+                      ),
                       InkWell(
                         onTap: () {
                           addCoinSheet("to");
@@ -149,37 +211,69 @@ class _SwapPageState extends State<SwapPage> {
                         child: Container(
                           // width: 400 - 20 - 20,
                           height: 107,
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(17),
                               color: const Color(0xFF131315),
-                              border: Border.all(color: const Color(0xff303030), width: 1)),
+                              border: Border.all(
+                                  color: const Color(0xff303030), width: 1)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text('Receive', style: TextStyle(color: Color(0xff737373), fontSize: 14, fontWeight: FontWeight.w500),
+                                  const Text(
+                                    'Receive',
+                                    style: TextStyle(
+                                        color: Color(0xff737373),
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
                                   ),
-                                  const SizedBox(height: 10,),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
                                   Row(
                                     children: [
-                                      ImageHelper('/icons/crypto/$toCoin.png', width: 38, height: 38,),
-                                      const SizedBox(width: 8,),
+                                      ImageHelper(
+                                        '/icons/crypto/$toCoin.png',
+                                        width: 38,
+                                        height: 38,
+                                      ),
+                                      const SizedBox(
+                                        width: 8,
+                                      ),
                                       Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Row(
                                             children: [
-                                              Text(toCoin, style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700),),
-                                              const SizedBox(width: 5,),
-                                              const ImageHelper('/icons/arrow_down.png'),
+                                              Text(
+                                                toCoin,
+                                                style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 22,
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                              ),
+                                              const SizedBox(
+                                                width: 5,
+                                              ),
+                                              const ImageHelper(
+                                                  '/icons/arrow_down.png'),
                                             ],
                                           ),
-                                          const SizedBox(height: 5,),
-                                          Text(toCoin, style: const TextStyle(color: Color(0xff737373), fontSize: 12, fontWeight: FontWeight.w400),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            toCoin,
+                                            style: const TextStyle(
+                                                color: Color(0xff737373),
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400),
                                           ),
                                         ],
                                       )
@@ -192,15 +286,42 @@ class _SwapPageState extends State<SwapPage> {
                                 children: [
                                   Row(
                                     children: [
-                                      Image.asset('assets/images/cash_transaction_package.png', width: 10,),
-                                      const SizedBox(width: 4,),
-                                      const Text('0', style: TextStyle(color: Color(0xff737373), fontSize: 14, fontWeight: FontWeight.w500),),
+                                      Image.asset(
+                                        'assets/images/cash_transaction_package.png',
+                                        width: 10,
+                                      ),
+                                      const SizedBox(
+                                        width: 4,
+                                      ),
+                                      const Text(
+                                        '0',
+                                        style: TextStyle(
+                                            color: Color(0xff737373),
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500),
+                                      ),
                                     ],
                                   ),
-                                  const SizedBox(height: 10,),
-                                  const Text('1', style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700),),
-                                  const SizedBox(height: 5,),
-                                  const Text('\$1,141.87', style: TextStyle(color: Color(0xff737373), fontSize: 12, fontWeight: FontWeight.w400),),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  const Text(
+                                    '1',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  const Text(
+                                    '\$1,141.87',
+                                    style: TextStyle(
+                                        color: Color(0xff737373),
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400),
+                                  ),
                                 ],
                               ),
                             ],
@@ -211,28 +332,40 @@ class _SwapPageState extends State<SwapPage> {
                   ),
 
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       setState(() {
                         String tt = fromCoin;
                         fromCoin = toCoin;
                         toCoin = tt;
                       });
                     },
-                    child: Image.asset('assets/images/cash_transaction_change.png', width: 32, height: 32,),
+                    child: Image.asset(
+                      'assets/images/cash_transaction_change.png',
+                      width: 32,
+                      height: 32,
+                    ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 18,),
-            Text('1 $fromCoin ≈ 1 $toCoin ', style: const TextStyle(color: Color(0xff737373), fontSize: 14, fontWeight: FontWeight.w700),),
-            const SizedBox(height: 18,),
+            const SizedBox(
+              height: 18,
+            ),
+            Text(
+              '1 $fromCoin ≈ 1 $toCoin ',
+              style: const TextStyle(
+                  color: Color(0xff737373),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700),
+            ),
+            const SizedBox(
+              height: 18,
+            ),
             // 余额
             InkWell(
-              onTap: (){
-
-              },
+              onTap: () {},
               child: Container(
-                margin : const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                 padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                 height: 48,
                 decoration: BoxDecoration(
@@ -241,7 +374,13 @@ class _SwapPageState extends State<SwapPage> {
                   // border: Border.all(color: Color(0xff303030), width: 1)
                 ),
                 alignment: Alignment.center,
-                child: const Text('Insufficient balance', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700),),
+                child: const Text(
+                  'Insufficient balance',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700),
+                ),
               ),
             ),
             Container(
@@ -259,20 +398,68 @@ class _SwapPageState extends State<SwapPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                       Text(S.current.fuel_cost, style: const TextStyle(color: Color(0xff999999), fontSize: 12, fontWeight: FontWeight.w500),),
-                       Text(S.current.selling_price, style: const TextStyle(color: Color(0xff999999), fontSize: 12, fontWeight: FontWeight.w500),),
-                       Text(S.current.price, style: const TextStyle(color: Color(0xff999999), fontSize: 12, fontWeight: FontWeight.w500),),
-                       Text(S.current.Transaction_Fees, style: const TextStyle(color: Color(0xff999999), fontSize: 12, fontWeight: FontWeight.w500),),
+                      Text(
+                        S.current.fuel_cost,
+                        style: const TextStyle(
+                            color: Color(0xff999999),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      Text(
+                        S.current.selling_price,
+                        style: const TextStyle(
+                            color: Color(0xff999999),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      Text(
+                        S.current.price,
+                        style: const TextStyle(
+                            color: Color(0xff999999),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      Text(
+                        S.current.Transaction_Fees,
+                        style: const TextStyle(
+                            color: Color(0xff999999),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500),
+                      ),
                     ],
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
-                      Text('0', style: TextStyle(color: Color(0xff999999), fontSize: 12, fontWeight: FontWeight.w500),),
-                      Text('1,414.87', style: TextStyle(color: Color(0xff999999), fontSize: 12, fontWeight: FontWeight.w500),),
-                      Text('1,414.87', style: TextStyle(color: Color(0xff999999), fontSize: 12, fontWeight: FontWeight.w500),),
-                      Text('1,414.87', style: TextStyle(color: Color(0xff999999), fontSize: 12, fontWeight: FontWeight.w500),),
+                      Text(
+                        '0',
+                        style: TextStyle(
+                            color: Color(0xff999999),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      Text(
+                        '1,414.87',
+                        style: TextStyle(
+                            color: Color(0xff999999),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      Text(
+                        '1,414.87',
+                        style: TextStyle(
+                            color: Color(0xff999999),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      Text(
+                        '1,414.87',
+                        style: TextStyle(
+                            color: Color(0xff999999),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500),
+                      ),
                     ],
                   ),
                 ],
@@ -284,7 +471,7 @@ class _SwapPageState extends State<SwapPage> {
     );
   }
 
-  void addCoinSheet(String fromTO){
+  void addCoinSheet(String fromTO) {
     final TextEditingController searchController = TextEditingController();
     List tempCoinList = [];
     tempCoinList.addAll(allCoinList);
@@ -292,9 +479,9 @@ class _SwapPageState extends State<SwapPage> {
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       context: context,
-      builder: (context){
+      builder: (context) {
         return StatefulBuilder(
-          builder: (context,mSetState){
+          builder: (context, mSetState) {
             // final TextEditingController searchController = TextEditingController();
             return Container(
               decoration: const BoxDecoration(
@@ -310,32 +497,47 @@ class _SwapPageState extends State<SwapPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(S.current.ADD_Token, style: const TextStyle(color: Colors.white,fontSize: 13),),
+                        Text(
+                          S.current.ADD_Token,
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 13),
+                        ),
                         GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             Navigator.of(context).pop();
                           },
                           child: Container(
                             // color: Colors.white,
                             padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                             alignment: Alignment.centerRight,
-                            child: const Icon(Icons.close,color: Colors.white,size: 20,),
+                            child: const Icon(
+                              Icons.close,
+                              color: Colors.white,
+                              size: 20,
+                            ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  const Divider(height: 2,color: APP_MainGrayColor,),
+                  const Divider(
+                    height: 2,
+                    color: APP_MainGrayColor,
+                  ),
                   Container(
                     height: 40,
                     padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
                     child: TextField(
                       controller: searchController,
                       cursorColor: const Color(0xFF584ED3),
-                      style: const TextStyle(color: Colors.white,fontSize: 12,textBaseline: TextBaseline.alphabetic),
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          textBaseline: TextBaseline.alphabetic),
                       decoration: InputDecoration(
                         isDense: true,
-                        contentPadding: const EdgeInsets.fromLTRB(10, 0, 10, 20),
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(10, 0, 10, 20),
                         fillColor: Colors.white.withOpacity(0.05),
                         filled: true,
                         border: OutlineInputBorder(
@@ -345,15 +547,23 @@ class _SwapPageState extends State<SwapPage> {
                             style: BorderStyle.none,
                           ),
                         ),
-                        prefixIcon: const Icon(Icons.search,size: 14,color: Colors.grey,),
+                        prefixIcon: const Icon(
+                          Icons.search,
+                          size: 14,
+                          color: Colors.grey,
+                        ),
                       ),
-                      onChanged: (coin){
-                        if(coin == ""){
+                      onChanged: (coin) {
+                        if (coin == "") {
                           tempCoinList.clear();
                           tempCoinList.addAll(allCoinList);
-                        }else{
+                        } else {
                           tempCoinList.clear();
-                          tempCoinList.addAll(allCoinList.where((element) => element.toString().toUpperCase().contains(coin.toString().toUpperCase())));
+                          tempCoinList.addAll(allCoinList.where((element) =>
+                              element
+                                  .toString()
+                                  .toUpperCase()
+                                  .contains(coin.toString().toUpperCase())));
                         }
                         setState(() {});
                         mSetState(() {});
@@ -363,33 +573,44 @@ class _SwapPageState extends State<SwapPage> {
                   Expanded(
                     child: ListView.builder(
                       itemCount: tempCoinList.length,
-                      itemBuilder: (context,index){
+                      itemBuilder: (context, index) {
                         String coin = tempCoinList[index];
                         return GestureDetector(
                             behavior: HitTestBehavior.opaque,
-                            onTap: (){
-
-                              if(fromTO == "from"){
+                            onTap: () {
+                              if (fromTO == "from") {
                                 fromCoin = coin;
-                              }else{
+                              } else {
                                 toCoin = coin;
                               }
                               Navigator.pop(context);
                               setState(() {});
                             },
                             child: Container(
-                              padding: const EdgeInsets.fromLTRB(20, 10, 10, 10),
+                              padding:
+                                  const EdgeInsets.fromLTRB(20, 10, 10, 10),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  ImageHelper('/icons/crypto/$coin.png',height: 30,width: 30,),
-                                  const SizedBox(width: 10,),
-                                  Text(coin,style: const TextStyle(fontSize: 14,color: Colors.white,fontWeight: FontWeight.w600),),
+                                  ImageHelper(
+                                    '/icons/crypto/$coin.png',
+                                    height: 30,
+                                    width: 30,
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    coin,
+                                    style: const TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  ),
                                 ],
                               ),
-                            )
-                        );
+                            ));
                       },
                     ),
                   )

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:coinstart_wallet_extension/Base/Global.dart';
+import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:coinstart_wallet_extension/api/eth_api.dart';
 import 'package:coinstart_wallet_extension/api/sui_api.dart';
 import 'package:coinstart_wallet_extension/api/sui_sdk.dart';
@@ -41,7 +41,6 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
 
   String feeUser = "-";
 
-
   List allCoinList = [
     "ETH",
     "SUI",
@@ -58,7 +57,9 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
     if (val.isEmpty) {
       return 'Amount is a required field';
     }
-    if (val.isNotEmpty && int.parse(val) > suiWallet.primaryCoinBalance.value - suiWallet.gasDefault.value) {
+    if (val.isNotEmpty &&
+        int.parse(val) >
+            suiWallet.primaryCoinBalance.value - suiWallet.gasDefault.value) {
       return 'Amount must be less than ${moneyFormat(suiWallet.primaryCoinBalance.value - suiWallet.gasDefault.value)} SUI';
     }
 
@@ -131,13 +132,16 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                         child: Column(
                           children: [
                             Container(
-                              padding: const EdgeInsets.fromLTRB(20, 10, 10, 10),
+                              padding:
+                                  const EdgeInsets.fromLTRB(20, 10, 10, 10),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     S.current.Select_transfer_network,
-                                    style: const TextStyle(color: Colors.white, fontSize: 13),
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 13),
                                   ),
                                   GestureDetector(
                                     onTap: () {
@@ -145,7 +149,8 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                                     },
                                     child: Container(
                                       // color: Colors.white,
-                                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                      padding:
+                                          const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                       alignment: Alignment.centerRight,
                                       child: const Icon(
                                         Icons.close,
@@ -173,10 +178,13 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                                         setState(() {});
                                       },
                                       child: Container(
-                                        padding: const EdgeInsets.fromLTRB(20, 10, 10, 10),
+                                        padding: const EdgeInsets.fromLTRB(
+                                            20, 10, 10, 10),
                                         child: Row(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           children: [
                                             ImageHelper(
                                               '/icons/crypto/${allCoinList[index]}.png',
@@ -188,7 +196,10 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                                             ),
                                             Text(
                                               allCoinList[index],
-                                              style: const TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w600),
+                                              style: const TextStyle(
+                                                  fontSize: 14,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                           ],
                                         ),
@@ -223,14 +234,16 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                             const SizedBox(width: 13),
                             Text(
                               coin,
-                              style: const TextStyle(color: Colors.white, fontSize: 13),
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 13),
                             ),
                           ],
                         ),
                       ),
                       Text(
                         'Standard: $coin',
-                        style: const TextStyle(color: Colors.white, fontSize: 13),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 13),
                       ),
                       const Icon(
                         Icons.arrow_forward_ios_rounded,
@@ -256,14 +269,16 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                       decoration: BoxDecoration(
                         color: const Color.fromRGBO(53, 54, 58, 1),
                         border: Border.all(color: Colors.grey[800]!),
-                        borderRadius: const BorderRadius.all(Radius.circular(5)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(5)),
                       ),
                       child: TextField(
                         controller: addrController,
                         style: const TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                           hintText: S.current.Enter_Receiving_Address(coin),
-                          hintStyle: const TextStyle(color: Colors.grey, fontSize: 11),
+                          hintStyle:
+                              const TextStyle(color: Colors.grey, fontSize: 11),
                           border: InputBorder.none,
                         ),
                         maxLines: 3,
@@ -279,37 +294,49 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                     Container(
                       alignment: Alignment.centerLeft,
                       padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
-                      child: Text(S.current.Amount, style: const TextStyle(color: Colors.white, fontSize: 16)),
+                      child: Text(S.current.Amount,
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 16)),
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       decoration: BoxDecoration(
                         color: const Color.fromRGBO(53, 54, 58, 1),
                         border: Border.all(color: Colors.grey[800]!),
-                        borderRadius: const BorderRadius.all(Radius.circular(5)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(5)),
                       ),
                       child: TextField(
                         controller: amountController,
                         style: const TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                           hintText: S.current.Enter_Receiving_Number,
-                          hintStyle: const TextStyle(color: Colors.grey, fontSize: 11),
+                          hintStyle:
+                              const TextStyle(color: Colors.grey, fontSize: 11),
                           border: InputBorder.none,
                           suffixIcon: SizedBox(
                             width: 60,
                             child: GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  num feeMax = suiWallet.suiEstimateFee(suiWallet.suiBalance);
+                                  num feeMax = suiWallet
+                                      .suiEstimateFee(suiWallet.suiBalance);
                                   num sendMax = suiWallet.suiBalance - feeMax;
                                   feeUser = feeMax.toString();
-                                  amountController.text = (NumUtil.getNumByValueDouble((neverDoubleTryOrZero(sendMax.toString()) / 1000000000), 9)).toString();
+                                  amountController.text =
+                                      (NumUtil.getNumByValueDouble(
+                                              (neverDoubleTryOrZero(
+                                                      sendMax.toString()) /
+                                                  1000000000),
+                                              9))
+                                          .toString();
                                 });
                               },
                               child: Container(
                                   decoration: const BoxDecoration(
                                     color: Color.fromRGBO(149, 97, 216, 0.3),
-                                    borderRadius: BorderRadius.all(Radius.circular(3.0)),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(3.0)),
                                   ),
                                   alignment: Alignment.center,
                                   margin: const EdgeInsets.fromLTRB(0, 5, 0, 5),
@@ -328,7 +355,14 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                             if (e == "") {
                               feeUser = "-";
                             } else {
-                              feeUser = suiWallet.suiEstimateFee(int.tryParse((neverDoubleTryOrZero(amountController.text) * 1000000000).toString()) ?? 0).toString();
+                              feeUser = suiWallet
+                                  .suiEstimateFee(int.tryParse(
+                                          (neverDoubleTryOrZero(
+                                                      amountController.text) *
+                                                  1000000000)
+                                              .toString()) ??
+                                      0)
+                                  .toString();
                             }
                           });
                         },
@@ -342,8 +376,11 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                   padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
                   child: Row(
                     children: [
-                      const Text("Available: ", style: TextStyle(color: Colors.white, fontSize: 12)),
-                      Text('${suiWallet.currentBalance} $coin', style: const TextStyle(color: APP_MainBgViewColor, fontSize: 12)),
+                      const Text("Available: ",
+                          style: TextStyle(color: Colors.white, fontSize: 12)),
+                      Text('${suiWallet.currentBalance} $coin',
+                          style: const TextStyle(
+                              color: APP_MainBgViewColor, fontSize: 12)),
                     ],
                   )),
               Container(
@@ -360,7 +397,9 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                       'Fee',
                       style: TextStyle(color: Colors.grey, fontSize: 11),
                     ),
-                    Text(feeUser, style: const TextStyle(color: Colors.grey, fontSize: 11)),
+                    Text(feeUser,
+                        style:
+                            const TextStyle(color: Colors.grey, fontSize: 11)),
                   ],
                 ),
               ),
@@ -376,7 +415,8 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                       showMyCustomText(S.current.Enter_Receiving_Number);
                       return;
                     }
-                    final TextEditingController passwordController = TextEditingController();
+                    final TextEditingController passwordController =
+                        TextEditingController();
                     bool canPasswordSee = false;
                     showModalBottomSheet(
                       isScrollControlled: true,
@@ -386,20 +426,25 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                         return Container(
                           decoration: const BoxDecoration(
                             color: Color.fromRGBO(20, 21, 26, 1),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
                           ),
                           height: 200,
                           alignment: Alignment.centerLeft,
                           child: Column(
                             children: [
                               Container(
-                                padding: const EdgeInsets.fromLTRB(20, 10, 10, 10),
+                                padding:
+                                    const EdgeInsets.fromLTRB(20, 10, 10, 10),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      S.current.Please_enter_transaction_password,
-                                      style: const TextStyle(color: Colors.white, fontSize: 13),
+                                      S.current
+                                          .Please_enter_transaction_password,
+                                      style: const TextStyle(
+                                          color: Colors.white, fontSize: 13),
                                     ),
                                     GestureDetector(
                                       onTap: () {
@@ -407,7 +452,8 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                                       },
                                       child: Container(
                                         // color: Colors.white,
-                                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
                                         alignment: Alignment.centerRight,
                                         child: const Icon(
                                           Icons.close,
@@ -424,15 +470,20 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                                 color: APP_MainGrayColor,
                               ),
                               Container(
-                                padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+                                padding:
+                                    const EdgeInsets.fromLTRB(20, 20, 20, 20),
                                 child: TextField(
                                   controller: passwordController,
                                   obscureText: true,
                                   cursorColor: const Color(0xFF584ED3),
-                                  style: const TextStyle(color: Colors.white, fontSize: 15, textBaseline: TextBaseline.alphabetic),
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      textBaseline: TextBaseline.alphabetic),
                                   decoration: InputDecoration(
                                     isDense: true,
-                                    contentPadding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                                    contentPadding: const EdgeInsets.fromLTRB(
+                                        10, 20, 10, 20),
                                     fillColor: Colors.white.withOpacity(0.05),
                                     filled: true,
                                     border: OutlineInputBorder(
@@ -446,16 +497,19 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                                 ),
                               ),
                               Container(
-                                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(20, 0, 20, 0),
                                 child: ElevatedButton(
                                   onPressed: () async {
                                     if (passwordController.text.isEmpty) {
-                                      showMyCustomText(S.current.Please_input_password);
+                                      showMyCustomText(
+                                          S.current.Please_input_password);
                                       return;
                                     }
 
                                     if (passwordController.text != localPwa) {
-                                      showMyCustomText(S.current.Wrong_Password);
+                                      showMyCustomText(
+                                          S.current.Wrong_Password);
                                       return;
                                     }
 
@@ -463,34 +517,47 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
 
                                     showMyCustomLoading(S.current.Please_Wait);
 
-                                    var index = await neverLocalStorageRead('network');
-                                    var network = networks[index != 'null' ? index.toString().toInt() : 0];
+                                    var index =
+                                        await neverLocalStorageRead('network');
+                                    var network = networks[index != 'null'
+                                        ? index.toString().toInt()
+                                        : 0];
                                     switch (network.name) {
                                       case 'SUI':
-                                        final result = await sendCoinsNow(passwordController.text);
+                                        final result = await sendCoinsNow(
+                                            passwordController.text);
                                         final address = result?.recipient;
                                         final amount = result?.amount;
-                                        Future.delayed(const Duration(milliseconds: 500)).then((onValue) async {
+                                        Future.delayed(const Duration(
+                                                milliseconds: 500))
+                                            .then((onValue) async {
                                           if (result?.status == 'success') {
                                             closeMyCustomBotLoading();
-                                            showMyCustomText("Transfer success!");
+                                            showMyCustomText(
+                                                "Transfer success!");
                                           } else {
                                             closeMyCustomBotLoading();
-                                            showMyCustomText("Transfer failed!");
+                                            showMyCustomText(
+                                                "Transfer failed!");
                                           }
                                         });
                                         break;
                                       case 'ETHMAINNET':
                                         break;
                                       case 'GOERLI':
-                                        var isSuccess = await sendETH(passwordController.text);
-                                        Future.delayed(const Duration(milliseconds: 500)).then((onValue) async {
+                                        var isSuccess = await sendETH(
+                                            passwordController.text);
+                                        Future.delayed(const Duration(
+                                                milliseconds: 500))
+                                            .then((onValue) async {
                                           if (isSuccess) {
                                             closeMyCustomBotLoading();
-                                            showMyCustomText("Transfer success!");
+                                            showMyCustomText(
+                                                "Transfer success!");
                                           } else {
                                             closeMyCustomBotLoading();
-                                            showMyCustomText("Transfer failed!");
+                                            showMyCustomText(
+                                                "Transfer failed!");
                                           }
                                         });
                                         break;
@@ -500,7 +567,8 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
                                       case 'KLAYTN':
                                       case 'KLAYTN_BAOBAB':
                                       case 'ASTAR':
-                                        suiWallet.currentWalletAddress(suiWallet.wallets.first.ethaddress);
+                                        suiWallet.currentWalletAddress(
+                                            suiWallet.wallets.first.ethaddress);
                                         break;
                                     }
                                   },
@@ -556,7 +624,10 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
 
   Future<SuiTansaction?> sendCoinsNow(String pwd) async {
     String address = addrController.text;
-    int amount = int.tryParse((neverDoubleTryOrZero(amountController.text) * 1000000000).toString()) ?? 0;
+    int amount = int.tryParse(
+            (neverDoubleTryOrZero(amountController.text) * 1000000000)
+                .toString()) ??
+        0;
     print("am = " + amount.toString());
 
     return await suiWallet.paySuiObjects(address, amount, pwd);
@@ -567,7 +638,8 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
     final completer = Completer<bool>();
 
     String receiver = addrController.text;
-    BigInt amount = BigInt.from(double.parse(amountController.text) * pow(10, 18));
+    BigInt amount =
+        BigInt.from(double.parse(amountController.text) * pow(10, 18));
 
     // final ContractLocator contractLocator = await ContractLocator.setup();
     int currentChainId = chainIdvalues[ChainId.GOERLI.index];
@@ -592,5 +664,4 @@ class _TokenTransferPageState extends State<TokenTransferPage> {
 
     return completer.future;
   }
-
 }

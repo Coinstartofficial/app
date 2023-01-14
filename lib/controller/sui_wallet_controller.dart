@@ -203,9 +203,7 @@ Wallet address
 
   addWallet(String mnemonic, String pwd) async {
     var enc = encryptMnemonic(mnemonic, pwd);
-    wallets.insert(0, SuiWallet(mnemonic: enc, suiApi:Get.find()));
-
-
+    wallets.insert(0, SuiWallet(mnemonic: enc, suiApi: Get.find()));
 
     var address = await getSuiAddress(await getKeypairFromMnemonics(mnemonic));
     final ethprivatekey = await getETHPrivateKey(mnemonic);

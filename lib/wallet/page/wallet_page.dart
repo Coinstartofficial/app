@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:coinstart_wallet_extension/Base/Global.dart';
+import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:coinstart_wallet_extension/api/eth_api.dart';
 import 'package:coinstart_wallet_extension/api/sui_api.dart';
 import 'package:coinstart_wallet_extension/base/MyBotTextToast.dart';
@@ -31,7 +31,8 @@ class WalletPage extends StatefulWidget {
   createState() => _WalletPageState();
 }
 
-class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMixin, SingleTickerProviderStateMixin {
+class _WalletPageState extends State<WalletPage>
+    with AutomaticKeepAliveClientMixin, SingleTickerProviderStateMixin {
   SuiWalletController suiWallet = Get.find();
 
   List allCoinList = [
@@ -74,7 +75,8 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
           await neverLocalStorageWrite('apiurl', 0.toString());
         }
         var value = await neverLocalStorageRead('network');
-        currentNetwork = networks[value != 'null' ? value.toString().toInt() : 0];
+        currentNetwork =
+            networks[value != 'null' ? value.toString().toInt() : 0];
 
         switch (currentNetwork.name) {
           case 'SUI':
@@ -124,18 +126,23 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
   void dispose() {
     super.dispose();
   }
-  void saveSuiApiserceUrl(String index)  {
+
+  void saveSuiApiserceUrl(String index) {
     SuiApi suiApi = Get.find();
     suiApi.configBaseUrl();
-   // await neverLocalStorageWrite('apiurl', index);
+    // await neverLocalStorageWrite('apiurl', index);
   }
+
   void readUserCoinList() async {
-    var tList = await neverLocalStorageRead('${currentNetwork.name}::${suiWallet.currentWalletAddress}');
+    var tList = await neverLocalStorageRead(
+        '${currentNetwork.name}::${suiWallet.currentWalletAddress}');
     print('readUserCoinList');
     print(tList);
     if (tList.toString() == "" || tList.toString() == "null") {
       userCoinList = [currentNetwork.coinName];
-      await neverLocalStorageWrite("${currentNetwork.name}::${suiWallet.currentWalletAddress}", userCoinList.join(","));
+      await neverLocalStorageWrite(
+          "${currentNetwork.name}::${suiWallet.currentWalletAddress}",
+          userCoinList.join(","));
     } else {
       try {
         userCoinList = tList.toString().split(",");
@@ -179,7 +186,10 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                   _stakeAndEarnRow(),
                   const SizedBox(height: 40),
                   _assetsHeadRow(),
-                  Expanded(child: userCoinList.isEmpty ? _emptyPlaceHolder() : _assetsListView()),
+                  Expanded(
+                      child: userCoinList.isEmpty
+                          ? _emptyPlaceHolder()
+                          : _assetsListView()),
                 ],
               ))),
     );
@@ -208,7 +218,10 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
               padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
               child: const Text(
                 "Wallet",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.white),
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white),
               ),
             ),
             const Icon(
@@ -308,7 +321,8 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
           GestureDetector(
             onTap: () async {
               neverLocalStorageWrite("isLock", '1');
-              Navigator.pushNamedAndRemoveUntil(context, "/NeedPasswordPage", (route) => false);
+              Navigator.pushNamedAndRemoveUntil(
+                  context, "/NeedPasswordPage", (route) => false);
             },
             behavior: HitTestBehavior.opaque,
             child: Container(
@@ -319,7 +333,11 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
               padding: const EdgeInsets.symmetric(vertical: 9, horizontal: 14),
               child: const Text(
                 "Lock",
-                style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w600, fontFamily: APP_FONT_MONTSERRAT),
+                style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: APP_FONT_MONTSERRAT),
               ),
             ),
           ),
@@ -334,9 +352,11 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
       child: GestureDetector(
         onTap: () {
           if (suiWallet.currentWalletAddress.startsWith('0x')) {
-            Clipboard.setData(ClipboardData(text: "${suiWallet.currentWalletAddress}"));
+            Clipboard.setData(
+                ClipboardData(text: "${suiWallet.currentWalletAddress}"));
           } else {
-            Clipboard.setData(ClipboardData(text: "0x${suiWallet.currentWalletAddress}"));
+            Clipboard.setData(
+                ClipboardData(text: "0x${suiWallet.currentWalletAddress}"));
           }
           showMyCustomCopyText(S.current.Copy_successfully);
         },
@@ -344,7 +364,11 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
           children: [
             Text(
               addressFuzzy(suiWallet.currentWalletAddress()),
-              style: const TextStyle(color: APP_MainGrayColor187, fontSize: 14, fontWeight: FontWeight.w500, fontFamily: APP_FONT_MONTSERRAT),
+              style: const TextStyle(
+                  color: APP_MainGrayColor187,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: APP_FONT_MONTSERRAT),
             ),
             const SizedBox(
               width: 5,
@@ -400,7 +424,8 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                                 },
                                 child: Container(
                                   // color: Colors.white,
-                                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   alignment: Alignment.centerRight,
                                   child: const Icon(
                                     Icons.keyboard_arrow_left_rounded,
@@ -411,7 +436,10 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                               ),
                               Text(
                                 S.current.Select_the_currency_to_receive,
-                                style: const TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w600),
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w600),
                               ),
                               const SizedBox(
                                 width: 30,
@@ -427,23 +455,31 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                                   behavior: HitTestBehavior.opaque,
                                   onTap: () {
                                     var address = "";
-                                    if(currentNetwork.name=="SUI"){
-                                      address = suiWallet.currentWalletAddressStandard;
-                                    }else{
-                                      address = suiWallet.currentWallet?.ethaddress??'';
+                                    if (currentNetwork.name == "SUI") {
+                                      address = suiWallet
+                                          .currentWalletAddressStandard;
+                                    } else {
+                                      address =
+                                          suiWallet.currentWallet?.ethaddress ??
+                                              '';
                                     }
 
                                     Navigator.pop(context);
-                                    Navigator.pushNamed(context, "/ReceiveQRPage", arguments: {
-                                      "coin": allCoinList[index],
-                                      "address": address,
-                                    });
+                                    Navigator.pushNamed(
+                                        context, "/ReceiveQRPage",
+                                        arguments: {
+                                          "coin": allCoinList[index],
+                                          "address": address,
+                                        });
                                   },
                                   child: Container(
-                                    padding: const EdgeInsets.fromLTRB(20, 10, 10, 10),
+                                    padding: const EdgeInsets.fromLTRB(
+                                        20, 10, 10, 10),
                                     child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         ImageHelper(
                                           '/icons/crypto/${allCoinList[index]}.png',
@@ -455,7 +491,10 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                                         ),
                                         Text(
                                           allCoinList[index],
-                                          style: const TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w600),
+                                          style: const TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
                                         ),
                                       ],
                                     ),
@@ -498,7 +537,8 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                                 },
                                 child: Container(
                                   // color: Colors.white,
-                                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   alignment: Alignment.centerRight,
                                   child: const Icon(
                                     Icons.keyboard_arrow_left_rounded,
@@ -509,7 +549,10 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                               ),
                               Text(
                                 S.current.Select_transfer_network,
-                                style: const TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w600),
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w600),
                               ),
                               const SizedBox(
                                 width: 30,
@@ -525,15 +568,20 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                                   behavior: HitTestBehavior.opaque,
                                   onTap: () {
                                     Navigator.pop(context);
-                                    Navigator.pushNamed(context, "/TokenTransferPage", arguments: {
-                                      "coin": allCoinList[index],
-                                    });
+                                    Navigator.pushNamed(
+                                        context, "/TokenTransferPage",
+                                        arguments: {
+                                          "coin": allCoinList[index],
+                                        });
                                   },
                                   child: Container(
-                                    padding: const EdgeInsets.fromLTRB(20, 10, 10, 10),
+                                    padding: const EdgeInsets.fromLTRB(
+                                        20, 10, 10, 10),
                                     child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         ImageHelper(
                                           '/icons/crypto/${allCoinList[index]}.png',
@@ -545,7 +593,10 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                                         ),
                                         Text(
                                           allCoinList[index],
-                                          style: const TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w600),
+                                          style: const TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
                                         ),
                                       ],
                                     ),
@@ -600,7 +651,11 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                 SizedBox(width: 10),
                 Text(
                   'Stake and Earn',
-                  style: TextStyle(color: Colors.white12, fontSize: 14, fontWeight: FontWeight.w400, fontFamily: APP_FONT_ROBOTO),
+                  style: TextStyle(
+                      color: Colors.white12,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: APP_FONT_ROBOTO),
                 ),
               ],
             ),
@@ -654,7 +709,10 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
               padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
               child: const Text(
                 "Assets",
-                style: TextStyle(fontSize: 18, color: APP_MainPurpleColor, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                    fontSize: 18,
+                    color: APP_MainPurpleColor,
+                    fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -669,12 +727,19 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                 child: TextField(
                   controller: searchController,
                   cursorColor: const Color(0xFF584ED3),
-                  style: const TextStyle(color: Colors.white, fontSize: 12, textBaseline: TextBaseline.alphabetic),
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      textBaseline: TextBaseline.alphabetic),
                   decoration: InputDecoration(
                     isDense: true,
                     filled: false,
                     hintText: S.current.Search,
-                    hintStyle: const TextStyle(color: Colors.white54, fontFamily: APP_FONT_POPPINS, fontSize: 12, fontWeight: FontWeight.w400),
+                    hintStyle: const TextStyle(
+                        color: Colors.white54,
+                        fontFamily: APP_FONT_POPPINS,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
@@ -738,13 +803,15 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
         },
         child: Container(
           decoration: BoxDecoration(
-            border: Border.all(width: 1, color: const Color.fromRGBO(95, 95, 95, 0.5)),
+            border: Border.all(
+                width: 1, color: const Color.fromRGBO(95, 95, 95, 0.5)),
             borderRadius: const BorderRadius.all(Radius.circular(6.0)),
           ),
           padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
           child: Text(
             S.current.Add_currency_1,
-            style: const TextStyle(color: Color.fromRGBO(95, 95, 95, 1), fontSize: 13),
+            style: const TextStyle(
+                color: Color.fromRGBO(95, 95, 95, 1), fontSize: 13),
           ),
         ),
       ),
@@ -778,22 +845,40 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                 ),
                 Text(
                   userCoinList[index],
-                  style: const TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w600),
+                  style: const TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600),
                 ),
                 const Spacer(),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      userCoinList[index] == "SUI" ? (NumUtil.getNumByValueDouble(neverDoubleTryOrZero(suiWallet.suiBalance.toString()) / 1000000000, 9)).toString() : "0.00",
-                      style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
+                      userCoinList[index] == "SUI"
+                          ? (NumUtil.getNumByValueDouble(
+                                  neverDoubleTryOrZero(
+                                          suiWallet.suiBalance.toString()) /
+                                      1000000000,
+                                  9))
+                              .toString()
+                          : "0.00",
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600),
                     ),
                     const SizedBox(
                       height: 5,
                     ),
                     Text(
-                      userCoinList[index] == "SUI" ? "\$${NumUtil.getNumByValueDouble(neverDoubleTryOrZero(suiWallet.suiBalance.toString()) / 1000000000, 9)}" : "0.00",
-                      style: const TextStyle(color: Color(0xFF696969), fontSize: 11, fontWeight: FontWeight.w600),
+                      userCoinList[index] == "SUI"
+                          ? "\$${NumUtil.getNumByValueDouble(neverDoubleTryOrZero(suiWallet.suiBalance.toString()) / 1000000000, 9)}"
+                          : "0.00",
+                      style: const TextStyle(
+                          color: Color(0xFF696969),
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
@@ -825,7 +910,8 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
           child: Column(
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 18),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 18, horizontal: 18),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -834,7 +920,11 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                     ),
                     Text(
                       S.current.Select_Network,
-                      style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600,fontFamily: APP_FONT_MONTSERRAT),
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: APP_FONT_MONTSERRAT),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -954,7 +1044,8 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                       children: [
                         Text(
                           S.current.ADD_Token,
-                          style: const TextStyle(color: Colors.white, fontSize: 13),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 13),
                         ),
                         GestureDetector(
                           onTap: () {
@@ -984,10 +1075,14 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                     child: TextField(
                       controller: searchController,
                       cursorColor: const Color(0xFF584ED3),
-                      style: const TextStyle(color: Colors.white, fontSize: 12, textBaseline: TextBaseline.alphabetic),
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          textBaseline: TextBaseline.alphabetic),
                       decoration: InputDecoration(
                         isDense: true,
-                        contentPadding: const EdgeInsets.fromLTRB(10, 0, 10, 20),
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(10, 0, 10, 20),
                         fillColor: Colors.white.withOpacity(0.05),
                         filled: true,
                         border: OutlineInputBorder(
@@ -1008,11 +1103,17 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                           tempCoinList.clear();
                           tempCoinList.addAll(allCoinList);
                         } else if (coin.length > 10) {
-                          var service = await ContractLocator.getCurrentInstance();
-                          var balance = service.getTokenBalance(EthereumAddress.fromHex(coin));
+                          var service =
+                              await ContractLocator.getCurrentInstance();
+                          var balance = service
+                              .getTokenBalance(EthereumAddress.fromHex(coin));
                         } else {
                           tempCoinList.clear();
-                          tempCoinList.addAll(allCoinList.where((element) => element.toString().toUpperCase().contains(coin.toString().toUpperCase())));
+                          tempCoinList.addAll(allCoinList.where((element) =>
+                              element
+                                  .toString()
+                                  .toUpperCase()
+                                  .contains(coin.toString().toUpperCase())));
                         }
                         setState(() {});
                         mSetState(() {});
@@ -1028,7 +1129,8 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                             behavior: HitTestBehavior.opaque,
                             onTap: () {},
                             child: Container(
-                              padding: const EdgeInsets.fromLTRB(20, 10, 10, 10),
+                              padding:
+                                  const EdgeInsets.fromLTRB(20, 10, 10, 10),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -1043,7 +1145,10 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                                   ),
                                   Text(
                                     coin,
-                                    style: const TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w600),
+                                    style: const TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
                                   ),
                                   const Expanded(child: SizedBox()),
                                   GestureDetector(
@@ -1054,7 +1159,9 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                                         userCoinList.add(coin);
                                       }
 
-                                      await neverLocalStorageWrite("$currentNetwork::${suiWallet.currentWalletAddress}", userCoinList.join(","));
+                                      await neverLocalStorageWrite(
+                                          "$currentNetwork::${suiWallet.currentWalletAddress}",
+                                          userCoinList.join(","));
 
                                       setState(() {});
                                       mSetState(() {});
@@ -1062,16 +1169,16 @@ class _WalletPageState extends State<WalletPage> with AutomaticKeepAliveClientMi
                                     behavior: HitTestBehavior.opaque,
                                     child: userCoinList.contains(coin)
                                         ? const ImageHelper(
-                                      '/images/netword_done.png',
-                                      height: 15,
-                                      width: 15,
-                                    )
+                                            '/images/netword_done.png',
+                                            height: 15,
+                                            width: 15,
+                                          )
                                         : const ImageHelper(
-                                      '/images/netword_done.png',
-                                      height: 15,
-                                      width: 15,
-                                      color: APP_MainGrayColor,
-                                    ),
+                                            '/images/netword_done.png',
+                                            height: 15,
+                                            width: 15,
+                                            color: APP_MainGrayColor,
+                                          ),
                                     // child: Icon(userCoinList.contains(coin) ? Icons.remove_circle_outline_rounded : Icons.add_circle_outline_rounded,
                                     //   color: userCoinList.contains(coin) ? Colors.red : const Color.fromRGBO(137, 56, 245, 1),size: 15,),
                                   ),

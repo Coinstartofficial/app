@@ -1,4 +1,4 @@
-import 'package:coinstart_wallet_extension/Base/Global.dart';
+import 'package:coinstart_wallet_extension/base/Global.dart';
 import 'package:coinstart_wallet_extension/base/image_helper.dart';
 import 'package:flutter/material.dart';
 
@@ -75,7 +75,7 @@ class _SwapPageNewState extends State<SwapPageNew> {
         body: Container(
             padding: const EdgeInsets.only(left: 20, right: 20),
             child:
-            Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
               const SizedBox(
                 height: 6,
               ),
@@ -284,20 +284,27 @@ class _SwapPageNewState extends State<SwapPageNew> {
               child: Column(
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(vertical: 18.0,horizontal: 0.0),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 18.0, horizontal: 0.0),
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
-                        Container(width: MediaQuery.of(context).size.width,),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                        ),
                         Text(
-                          fromTO == 'from' ? S.current.Sell_Token_tip : S.current.Buy_Token_tip,
+                          fromTO == 'from'
+                              ? S.current.Sell_Token_tip
+                              : S.current.Buy_Token_tip,
                           style: const TextStyle(
-                              color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600,fontFamily: APP_FONT_MONTSERRAT),
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: APP_FONT_MONTSERRAT),
                         ),
                         Positioned(
                             right: 18,
-                            child:
-                            GestureDetector(
+                            child: GestureDetector(
                               onTap: () {
                                 Navigator.of(context).pop();
                               },
@@ -322,7 +329,8 @@ class _SwapPageNewState extends State<SwapPageNew> {
                   const SizedBox(height: 16),
                   Container(
                     height: 40,
-                    padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 20),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
                     child: TextField(
                       controller: searchController,
                       cursorColor: const Color(0xFF584ED3),
@@ -333,18 +341,21 @@ class _SwapPageNewState extends State<SwapPageNew> {
                       decoration: InputDecoration(
                         isDense: true,
                         contentPadding:
-                        const EdgeInsets.fromLTRB(10, 0, 10, 20),
+                            const EdgeInsets.fromLTRB(10, 0, 10, 20),
                         fillColor: const Color.fromRGBO(30, 30, 30, 1),
                         filled: true,
                         hintText: S.current.Search,
-                        hintStyle: const TextStyle(color: Colors.white54, fontFamily: APP_FONT_POPPINS,fontSize: 12,fontWeight: FontWeight.w400),
+                        hintStyle: const TextStyle(
+                            color: Colors.white54,
+                            fontFamily: APP_FONT_POPPINS,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
                           borderSide: const BorderSide(
                               width: 0,
                               style: BorderStyle.solid,
-                              color: Color.fromRGBO(55, 55, 55, 1)
-                          ),
+                              color: Color.fromRGBO(55, 55, 55, 1)),
                         ),
                         prefixIcon: const Icon(
                           Icons.search,
@@ -387,7 +398,7 @@ class _SwapPageNewState extends State<SwapPageNew> {
                             },
                             child: Container(
                               padding:
-                              const EdgeInsets.fromLTRB(20, 10, 10, 10),
+                                  const EdgeInsets.fromLTRB(20, 10, 10, 10),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.start,
