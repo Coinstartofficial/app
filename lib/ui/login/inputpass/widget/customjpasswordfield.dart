@@ -139,6 +139,7 @@ class PWEditFieldState extends State<PWEditField> {
   }
 
   Widget getChild(int index) {
+    print('$_currentIndex > $index');
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: widget.textFieldSpace),
       child: Container(
@@ -192,11 +193,12 @@ class PWEditFieldState extends State<PWEditField> {
         ),
         textAlign: TextAlign.center,
         onChanged: (String text) {
+          _currentIndex = text.length;
+          setState(() {});
+          print('_currentIndex=>$_currentIndex');
           if (widget.onChanged != null) {
             widget.onChanged!(text);
           }
-          _currentIndex = text.length;
-          setState(() {});
           // if (widget.onInputDone != null && text.length == widget.textFieldCount) {
           //   widget.onInputDone!(widget.controller!.text);
           //   _focusNode.unfocus();

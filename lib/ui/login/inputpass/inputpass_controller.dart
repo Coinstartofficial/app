@@ -18,8 +18,8 @@ class InputPassController extends GetxController {
     super.onInit();
   }
 
-  void addWalletToLocal() {
+  Future<void> addWalletToLocal() async {
     SuiWalletController suiWallet = Get.find();
-    suiWallet.addWallet(mnemonic, secondPwd.value * 2);
+    await suiWallet.addWallet(mnemonic, secondPwd.value * 2);
   }
 }

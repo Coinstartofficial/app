@@ -59,7 +59,9 @@ class InputPassPage extends GetView<InputPassController> {
                   onChanged: (value) {
                     if (value.length == 4) {
                       controller.firstPwd.value = value;
-                      controller.inputState.value = true;
+                      Future.delayed(const Duration(milliseconds: 300), () {
+                        controller.inputState.value = true;
+                      });
                     }
                   }),
             ),
@@ -78,7 +80,9 @@ class InputPassPage extends GetView<InputPassController> {
                     if (value.length == 4) {
                       controller.secondPwd.value = value;
                       if (controller.secondPwd.value == controller.firstPwd.value) {
-                        controller.addWalletToLocal();
+                        Future.delayed(const Duration(milliseconds: 300), () {
+                          controller.addWalletToLocal();
+                        });
                       }
                     }
                   }),

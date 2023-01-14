@@ -85,6 +85,12 @@ class ImportPage extends GetView<ImportController> {
               // color: AppColors.color_212937,
               child: TextField(
                 maxLines: 6,
+                toolbarOptions: const ToolbarOptions(
+                  paste: true,
+                  cut: true,
+                  copy: true,
+                  selectAll: true,
+                ),
                 style: const TextStyle(
                   fontSize: 16,
                   color: AppColors.color_ffffff,
