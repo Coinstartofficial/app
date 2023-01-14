@@ -1,5 +1,8 @@
 import 'dart:math';
 
+import 'package:coinstart_wallet_extension/base/MyBotTextToast.dart';
+import 'package:coinstart_wallet_extension/common/routes/app_pages.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 ///author: lty
@@ -9,15 +12,18 @@ import 'package:get/get.dart';
 class ConfirmController extends GetxController {
   final mnemonicRadomIndexStr = ''.obs;
   final mnemonicRadomList = [].obs;
+  List<String>? mnemonicList;
+  final textControllerList = [TextEditingController(), TextEditingController(), TextEditingController()];
+  dynamic argument;
 
   @override
   void onInit() {
     super.onInit();
-    var data = Get.arguments;
-    var mnemonic = data['mnemonic'];
-    List<String>? list = mnemonic?.split(' ')?.toList();
-    if (list != null) {
-      var randomList = random(list);
+    argument = Get.arguments;
+    var mnemonic = argument['mnemonic'];
+    mnemonicList = mnemonic?.split(' ')?.toList();
+    if (mnemonicList != null) {
+      var randomList = random(mnemonicList!);
       mnemonicRadomList.assignAll(randomList);
       var first = randomList[0];
       var second = randomList[1];
@@ -26,7 +32,32 @@ class ConfirmController extends GetxController {
     }
   }
 
-  void check() {}
+  @override
+  void onClose() {
+    for (var element in textControllerList) {
+      element.dispose();
+    }
+    super.onClose();
+  }
+
+  bool check() {
+    for (int i = 0; i < 3; i++) {
+      var element = textControllerList[i];
+      if (element.text.isEmpty || element.text != mnemonicList![mnemonicRadomList[i] - 1]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  void submit() {
+    if (check()) {
+      Get.toNamed(Routes.INPUT_PASS, arguments: argument);
+    } else {
+      showMyCustomText('验证不通过');
+    }
+  }
+
   List<int> random(List<String> list) {
     int sizeOfCopiedList = list.length;
 
@@ -35,7 +66,7 @@ class ConfirmController extends GetxController {
     var random = Random();
     for (int i = 0; i < sizeOfCopiedList; i++) {
       index = random.nextInt(sizeOfCopiedList);
-      if (choosedList.contains(index)) {
+      if (choosedList.contains(index + 1)) {
         continue;
       }
       choosedList.add(index + 1);
@@ -43,6 +74,7 @@ class ConfirmController extends GetxController {
         break;
       }
     }
+    choosedList.sort((left, right) => left.compareTo(right));
     return choosedList;
   }
 }

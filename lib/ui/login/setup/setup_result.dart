@@ -13,15 +13,11 @@ class SetUpResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var data = Get.arguments;
-    print(data);
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
         children: [
           Column(
-            // crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisSize: MainAxisSize.max,
-            // mainAxisAlignment: MainAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Image(
@@ -34,8 +30,8 @@ class SetUpResult extends StatelessWidget {
               Container(
                 alignment: AlignmentDirectional.center,
                 margin: const EdgeInsets.only(
-                  left: 68,
-                  right: 68,
+                  left: 40,
+                  right: 40,
                 ),
                 child: const Text(
                   'Grab a pen and paper',
@@ -45,11 +41,12 @@ class SetUpResult extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 16),
               Container(
                 alignment: AlignmentDirectional.center,
                 margin: const EdgeInsets.only(
-                  left: 68,
-                  right: 68,
+                  left: 40,
+                  right: 40,
                 ),
                 child: const Text(
                   '''Prepare to write down your recovery phrase. lt's the only way to have access to and recover your wallet in the event you lose your device. Do not send it to yourself via email or take a screenshot. It's safer when kept offline.''',
@@ -57,6 +54,7 @@ class SetUpResult extends StatelessWidget {
                     fontSize: 18,
                     color: AppColors.color_a299aa,
                   ),
+                  textAlign: TextAlign.center,
                 ),
               ),
             ],

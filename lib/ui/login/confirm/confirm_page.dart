@@ -31,7 +31,7 @@ class ConfirmPage extends GetView<ConfirmController> {
                 '''So, let's check''',
                 style: TextStyle(
                   fontSize: 30,
-                  color: Colors.white,
+                  color: AppColors.color_ffffff,
                 ),
               ),
             ),
@@ -41,8 +41,8 @@ class ConfirmPage extends GetView<ConfirmController> {
             Container(
               alignment: AlignmentDirectional.center,
               margin: const EdgeInsets.only(
-                left: 68,
-                right: 68,
+                left: 18,
+                right: 18,
               ),
               child: Text(
                 '''To check whether you've written down your recovery phrase correctly, please enter the ${controller.mnemonicRadomIndexStr.value} words.''',
@@ -50,6 +50,7 @@ class ConfirmPage extends GetView<ConfirmController> {
                   fontSize: 18,
                   color: AppColors.color_a299aa,
                 ),
+                textAlign: TextAlign.center,
               ),
             ),
             const SizedBox(
@@ -58,8 +59,12 @@ class ConfirmPage extends GetView<ConfirmController> {
             Padding(
               padding: const EdgeInsets.only(left: 24.0),
               child: Column(
-                children: controller.mnemonicRadomList.value
-                    .map((e) => Container(
+                children: controller.mnemonicRadomList
+                    .asMap()
+                    .map(
+                      (i, element) => MapEntry(
+                        i,
+                        Container(
                           margin: const EdgeInsets.only(
                             top: 12,
                             right: 47,
@@ -69,15 +74,15 @@ class ConfirmPage extends GetView<ConfirmController> {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Text(
-                                  '${e}th',
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    color: AppColors.color_6c6771,
+                                SizedBox(
+                                  width: 37,
+                                  child: Text(
+                                    '${element}th',
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: AppColors.color_6c6771,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  width: 8,
                                 ),
                                 Expanded(
                                   child: Container(
@@ -86,14 +91,15 @@ class ConfirmPage extends GetView<ConfirmController> {
                                       color: AppColors.color_212937,
                                     ),
                                     // color: AppColors.color_212937,
-                                    child: const TextField(
+                                    child: TextField(
                                       obscureText: false,
                                       keyboardType: TextInputType.emailAddress,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 16,
                                         color: AppColors.color_ffffff,
                                       ),
-                                      decoration: InputDecoration(
+                                      controller: controller.textControllerList[i],
+                                      decoration: const InputDecoration(
                                         hintStyle: TextStyle(
                                           fontSize: 16,
                                           color: AppColors.color_a299aa,
@@ -117,7 +123,10 @@ class ConfirmPage extends GetView<ConfirmController> {
                               ],
                             ),
                           ),
-                        ))
+                        ),
+                      ),
+                    )
+                    .values
                     .toList(),
               ),
             ),
@@ -126,7 +135,7 @@ class ConfirmPage extends GetView<ConfirmController> {
             ),
             InkWell(
               onTap: () {
-                controller.check();
+                controller.submit();
               },
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 52).copyWith(top: 24),

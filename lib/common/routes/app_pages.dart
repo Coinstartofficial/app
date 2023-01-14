@@ -4,11 +4,14 @@ import 'package:coinstart_wallet_extension/ui/login/confirm/confirm_binding.dart
 import 'package:coinstart_wallet_extension/ui/login/confirm/confirm_page.dart';
 import 'package:coinstart_wallet_extension/ui/login/import/import_binding.dart';
 import 'package:coinstart_wallet_extension/ui/login/import/import_page.dart';
+import 'package:coinstart_wallet_extension/ui/login/inputpass/inputpass_binding.dart';
+import 'package:coinstart_wallet_extension/ui/login/inputpass/inputpass_page.dart';
 import 'package:coinstart_wallet_extension/ui/login/recoveryphrase/recovery_phrase_binding.dart';
 import 'package:coinstart_wallet_extension/ui/login/recoveryphrase/recovery_phrase_page.dart';
-import 'package:coinstart_wallet_extension/ui/login/setup/setup_binding.dart';
 import 'package:coinstart_wallet_extension/ui/login/setup/setup_page.dart';
-import 'package:coinstart_wallet_extension/ui/login/setup/widget/setup_result.dart';
+import 'package:coinstart_wallet_extension/ui/login/setup/setup_result.dart';
+import 'package:coinstart_wallet_extension/ui/login/setuploading/setup_loading_binding.dart';
+import 'package:coinstart_wallet_extension/ui/login/setuploading/setup_loading_page.dart';
 import 'package:get/get.dart';
 
 ///author: lty
@@ -24,11 +27,15 @@ class AppPages {
     GetPage(
       name: Routes.SETUP,
       page: () => const SetUpPage(),
-      binding: SetUpBinding(),
+    ),
+    GetPage(
+      name: Routes.SETUP_LOADING,
+      page: () => const SetUpLoadingPage(),
+      binding: SetUpLoadingBinding(),
     ),
     GetPage(
       name: Routes.SETUP_RESULT,
-      page: () => SetUpResult(),
+      page: () => const SetUpResult(),
     ),
     GetPage(
       name: Routes.RECOVERY_PHRASE,
@@ -44,6 +51,11 @@ class AppPages {
       name: Routes.CONFIRM,
       page: () => const ConfirmPage(),
       binding: ConfirmBinding(),
+    ),
+    GetPage(
+      name: Routes.INPUT_PASS,
+      page: () => const InputPassPage(),
+      binding: InputPassBinding(),
     ),
   ];
 }

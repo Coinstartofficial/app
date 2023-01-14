@@ -18,6 +18,8 @@ class AppColors {
   static const Color color_212937 = Color(0xff212937);
   static const Color color_ac8af8 = Color(0xffac8af8);
   static const Color color_6c6771 = Color(0xff6c6771);
+  static const Color color_a679e0 = Color(0xffa679e0);
+  static const Color color_485162 = Color(0xff485162);
 }
 
 class Themes {

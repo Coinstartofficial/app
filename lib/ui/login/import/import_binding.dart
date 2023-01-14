@@ -1,3 +1,4 @@
+import 'package:coinstart_wallet_extension/ui/login/import/import_controller.dart';
 import 'package:get/get.dart';
 
 ///author: lty
@@ -6,5 +7,10 @@ import 'package:get/get.dart';
 
 class ImportBinding extends Bindings {
   @override
-  void dependencies() {}
+  void dependencies() {
+    Get.lazyPut<ImportController>(
+      () => ImportController(),
+      fenix: true,
+    );
+  }
 }

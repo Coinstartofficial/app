@@ -78,19 +78,19 @@ class ImportPage extends GetView<ImportController> {
               height: 12,
             ),
             Container(
-              // color: AppColors.color_212937,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 color: AppColors.color_212937,
               ),
               // color: AppColors.color_212937,
-              child: const TextField(
+              child: TextField(
                 maxLines: 6,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   color: AppColors.color_ffffff,
                 ),
-                decoration: InputDecoration(
+                controller: controller.textController,
+                decoration: const InputDecoration(
                   hintMaxLines: 6,
                   hintStyle: TextStyle(
                     fontSize: 16,
@@ -111,7 +111,9 @@ class ImportPage extends GetView<ImportController> {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                controller.sumit();
+              },
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 52).copyWith(top: 24),
                 decoration: const BoxDecoration(

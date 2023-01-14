@@ -87,7 +87,7 @@ class RecoveryPhrasePage extends GetView<RecoveryPhraseController> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
-                                  '$i.',
+                                  '${i + 1}.',
                                   style: const TextStyle(
                                     fontSize: 18,
                                     color: AppColors.color_a299aa,
@@ -118,7 +118,6 @@ class RecoveryPhrasePage extends GetView<RecoveryPhraseController> {
               padding: const EdgeInsets.only(bottom: 50.0),
               child: InkWell(
                 onTap: () {
-                  print(Get.arguments);
                   Get.toNamed(Routes.CONFIRM, arguments: Get.arguments);
                 },
                 child: Container(
