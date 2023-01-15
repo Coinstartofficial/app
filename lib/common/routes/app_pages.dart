@@ -12,6 +12,8 @@ import 'package:coinstart_wallet_extension/ui/login/setup/setup_page.dart';
 import 'package:coinstart_wallet_extension/ui/login/setup/setup_result.dart';
 import 'package:coinstart_wallet_extension/ui/login/setuploading/setup_loading_binding.dart';
 import 'package:coinstart_wallet_extension/ui/login/setuploading/setup_loading_page.dart';
+import 'package:coinstart_wallet_extension/ui/main/main_binding.dart';
+import 'package:coinstart_wallet_extension/ui/main/main_page.dart';
 import 'package:get/get.dart';
 
 ///author: lty
@@ -56,6 +58,11 @@ class AppPages {
       name: Routes.INPUT_PASS,
       page: () => const InputPassPage(),
       binding: InputPassBinding(),
+    ),
+    GetPage(
+      name: Routes.MAIN,
+      page: () => const MainPage(),
+      binding: MainBinding(),
     ),
   ];
 }

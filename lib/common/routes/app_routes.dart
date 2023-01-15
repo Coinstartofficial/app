@@ -12,4 +12,5 @@ abstract class Routes {
   static const CONFIRM = '/confirm';
   static const INPUT_PASS = '/input_pass';
   static const IMPORT = '/import';
+  static const MAIN = '/main';
 }
