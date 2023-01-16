@@ -104,7 +104,8 @@ flutter:
     - assets/icons/crypto/
     - assets/images/
     - fonts/
-
+    - assets/www/index.html
+    - assets/www/coinstart.js
   fonts:
     - family: AliPuHuiTi
       fonts:

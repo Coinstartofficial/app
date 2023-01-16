@@ -13,4 +13,5 @@ abstract class Routes {
   static const INPUT_PASS = '/input_pass';
   static const IMPORT = '/import';
   static const MAIN = '/main';
+  static const WEB = '/web';
 }

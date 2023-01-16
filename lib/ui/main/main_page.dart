@@ -1,6 +1,7 @@
 import 'package:coinstart_wallet_extension/common/style/styles.dart';
 import 'package:coinstart_wallet_extension/common/utils/keep_alive_wrapper.dart';
 import 'package:coinstart_wallet_extension/ui/colletion/colletion_tab_router.dart';
+import 'package:coinstart_wallet_extension/ui/dapp/dapp_tab_router.dart';
 import 'package:coinstart_wallet_extension/ui/home/home_tab_router.dart';
 import 'package:coinstart_wallet_extension/ui/main/main_controller.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class MainPage extends GetView<MainController> {
           children: const [
             KeepAliveWrapper(child: HomeTabRouter()),
             KeepAliveWrapper(child: ColletionTabRouter()),
-            // KeepAliveWrapper(child: HomeTabRouter()),
+            KeepAliveWrapper(child: DappTabRouter()),
             // KeepAliveWrapper(child: HomeTabRouter()),
             // KeepAliveWrapper(child: HomeTabRouter()),
             // KeepAliveWrapper(child: HomeTabRouter()),

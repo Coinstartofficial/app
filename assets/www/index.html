@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>KYCManager front-end</title>
+    <script language="javascript" type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- 此处应该引入coinstart.js，可以放到官网下 -->
+    <script src="./coinstart.js"></script>
+    <style type="text/css">
+        .container {
+            column-width: 100%;
+            column-gap: 20px;
+        }
+
+        .card {
+            break-inside: avoid;
+            background-color: rgb(207, 232, 220);
+            border: 2px solid rgb(79, 185, 227);
+            padding: 10px;
+            margin: 0 0 1em 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>getAccounts</h2>
+            <button type="button" id ="getAccounts">getAccounts</button>
+            <p id="getAccountsResult"></p>
+        </div>
+
+        <div class="card">
+            <h2>requestPermissions</h2>
+            <button type="button" id ="requestPermissions">requestPermissions</button>
+            <p  id="requestPermissionsResult"></p>
+        </div>
+
+        <div class="card">
+            <h2>hasPermissions</h2>
+            <button type="button" id ="hasPermissions">hasPermissions</button>
+            <p  id="hasPermissionsResult"></p>
+        </div>
+        <div class="card">
+            <h2>executeMoveCall</h2>
+            <button type="button" id ="executeMoveCall">executeMoveCall</button>
+            <p  id="executeMoveCallResult"></p>
+        </div>
+
+        <div class="card">
+            <h2>executeSerializedMoveCall</h2>
+            <button type="button" id ="executeSerializedMoveCall">executeSerializedMoveCall</button>
+            <p  id="executeSerializedMoveCallResult"></p>
+        </div>
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#getAccounts").click(function () {
+                Wallet.getAccounts('', function (data) {
+                    $('#getAccountsResult').text(JSON.stringify(data));
+                }, function (error) {
+                    $('#getAccountsResult').text(JSON.stringify(error));
+                });
+            });
+            $("#requestPermissions").click(function () {
+                Wallet.requestPermissions('', function (data) {
+                    $('#requestPermissionsResult').text(JSON.stringify(data));
+                }, function (error) {
+                    $('#requestPermissionsResult').text(JSON.stringify(error));
+                });
+
+            });
+            $("#hasPermissions").click(function () {
+                Wallet.hasPermissions('', function (data) {
+                    $('#hasPermissionsResult').text(JSON.stringify(data));
+                }, function (error) {
+                    $('#hasPermissionsResult').text(JSON.stringify(error));
+                });
+
+            });
+            $("#executeMoveCall").click(function () {
+                Wallet.executeMoveCall('', function (data) {
+                    $('#executeMoveCallResult').text(JSON.stringify(data));
+                }, function (error) {
+                    $('#executeMoveCallResult').text(JSON.stringify(error));
+                });
+            });
+            $("#executeSerializedMoveCall").click(function () {
+                Wallet.executeSerializedMoveCall('', function (data) {
+                    $('#executeSerializedMoveCallResult').text(JSON.stringify(data));
+                }, function (error) {
+                    $('#executeSerializedMoveCallResult').text(JSON.stringify(error));
+                });
+
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

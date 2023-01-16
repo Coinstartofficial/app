@@ -10,6 +10,8 @@ import 'package:coinstart_wallet_extension/generated/l10n.dart';
 import 'package:coinstart_wallet_extension/home_page.dart';
 import 'package:coinstart_wallet_extension/register/page/register_page.dart';
 import 'package:coinstart_wallet_extension/setup/page/need_password_page.dart';
+import 'package:coinstart_wallet_extension/ui/web/browser/utils/browser_config.dart';
+import 'package:coinstart_wallet_extension/ui/web/utils/BrowserInternalImpl.dart';
 import 'package:coinstart_wallet_extension/wallet/page/record_page.dart';
 import 'package:coinstart_wallet_extension/wallet/page/swap_page.dart';
 import 'package:coinstart_wallet_extension/wallet/page/swap_record_details_page.dart';
@@ -33,6 +35,8 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   Get.put(SuiApi());
   await suiWallet.loadStorageWallet();
+
+  BrowserConfig().setDebug(true).setBrowserInternal(BrowserInternalImpl());
   runApp(const MyApp());
   ErrorWidget.builder = (FlutterErrorDetails error) {
     return const Center(

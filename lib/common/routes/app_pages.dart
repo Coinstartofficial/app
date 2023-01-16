@@ -14,6 +14,8 @@ import 'package:coinstart_wallet_extension/ui/login/setuploading/setup_loading_b
 import 'package:coinstart_wallet_extension/ui/login/setuploading/setup_loading_page.dart';
 import 'package:coinstart_wallet_extension/ui/main/main_binding.dart';
 import 'package:coinstart_wallet_extension/ui/main/main_page.dart';
+import 'package:coinstart_wallet_extension/ui/web/web_binding.dart';
+import 'package:coinstart_wallet_extension/ui/web/web_page.dart';
 import 'package:get/get.dart';
 
 ///author: lty
@@ -63,6 +65,11 @@ class AppPages {
       name: Routes.MAIN,
       page: () => const MainPage(),
       binding: MainBinding(),
+    ),
+    GetPage(
+      name: Routes.WEB,
+      page: () => const WebPage(),
+      binding: WebBinding(),
     ),
   ];
 }
