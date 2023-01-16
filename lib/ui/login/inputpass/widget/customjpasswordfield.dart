@@ -194,11 +194,11 @@ class PWEditFieldState extends State<PWEditField> {
         textAlign: TextAlign.center,
         onChanged: (String text) {
           _currentIndex = text.length;
-          setState(() {});
           print('_currentIndex=>$_currentIndex');
           if (widget.onChanged != null) {
             widget.onChanged!(text);
           }
+          setState(() {});
           // if (widget.onInputDone != null && text.length == widget.textFieldCount) {
           //   widget.onInputDone!(widget.controller!.text);
           //   _focusNode.unfocus();

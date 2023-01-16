@@ -1,4 +1,10 @@
+import 'package:coinstart_wallet_extension/base/MyBotTextToast.dart';
+import 'package:coinstart_wallet_extension/common/routes/app_pages.dart';
+import 'package:coinstart_wallet_extension/common/style/styles.dart';
+import 'package:coinstart_wallet_extension/common/utils/app_state.dart';
 import 'package:coinstart_wallet_extension/controller/sui_wallet_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 ///author: lty
@@ -6,6 +12,7 @@ import 'package:get/get.dart';
 ////Description:
 
 class InputPassController extends GetxController {
+  final appState = Rx<AppState>(AppState.IDLE);
   var inputState = false.obs;
   var firstPwd = ''.obs;
   var secondPwd = ''.obs;
@@ -19,7 +26,15 @@ class InputPassController extends GetxController {
   }
 
   Future<void> addWalletToLocal() async {
-    SuiWalletController suiWallet = Get.find();
-    await suiWallet.addWallet(mnemonic, secondPwd.value * 2);
+    try {
+      await Future.delayed(const Duration(milliseconds: 300));
+      SuiWalletController suiWallet = Get.find();
+      await suiWallet.addWallet(mnemonic, secondPwd.value * 2);
+      Get.back();
+      Get.toNamed(Routes.MAIN);
+      appState.value = AppState.DONE;
+    } catch (ex, stack) {
+      appState.value = AppState.ERROR;
+    }
   }
 }

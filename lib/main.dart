@@ -91,7 +91,7 @@ class _MyAppState extends State<MyApp> {
       ],
       initialBinding: InitialBinding(),
       title: 'CoinStart',
-      initialRoute: suiWallet.hasWallet ? Routes.MAIN : Routes.SETUP,
+      initialRoute: Routes.SETUP,
       getPages: AppPages.routes,
       theme: Themes.defaultTheme,
       navigatorObservers: [BotToastNavigatorObserver()],
